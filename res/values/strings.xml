@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Easy Gourmet</string>
+    <string name="action_settings">Settings</string>
+    <string name="textViewNevera">Lista lo que hay en tu nevera</string>
+    <string name="buttonNevera">Buscar Recetas</string>
+    <string name="title_activity_resultados">Resultados</string>
+    <string name="title_activity_recetas_vista">RecetasVista</string>
+    <string name="title_activity_ingredintes_vista">IngredintesVista</string>
+    <string name="menu_principal_queHayEnLaNevera">¿Que Hay en tu Nevera?</string>
+    <string name="menu_principal_buscarIngredinetes">Buscar Ingredintes&#8230;</string>
+    <string name="menu_principal_receta_del_dia">Ver\nReceta del Día</string>
+    <string name="menu_principal_vegetariano">Soy Vegetariano</string>
+    <string name="menu_principal_vegano">Soy Vegano</string>
+    <string name="menu_principal_celiaco">Soy Celiaco</string>
+    <string name="ingredientes_info_nutricional">Información Nutricional</string>
+    <string name="ingredientes_cantidad">Cantidad: 100 gramos</string>
+    <string name="ingredientes_kcal_label">Kcal: </string>
+    <string name="ingredientes_grasas_label">Grasas: </string>
+    <string name="ingredientes_grasas_saturadas_label">Grasas Saturadas: </string>
+    <string name="ingredientes_grasas_insaturadas_label">Grasas Insaturadas: </string>
+    <string name="ingredientes_grasas_monoinsaturadas_label">Grasas Monoinsaturadas: </string>
+    <string name="ingredientes_colesterol_label">Colesterol: </string>
+    <string name="ingredientes_sodio_label">Sodio: </string>
+    <string name="ingredientes_potasio_label">Potasio: </string>
+    <string name="ingredientes_hierro_label">Hierro: </string>
+    <string name="ingredientes_calcio_label">Calcio: </string>
+    <string name="ingredientes_fosforo_label">Fosforo: </string>
+    <string name="ingredientes_zinc_label">Zinc: </string>
+    <string name="ingredientes_hco_label">HCO: </string>
+    <string name="ingredientes_fibra_label">Fibra Alimentaria: </string>
+    <string name="ingredientes_vitaminas_label">Vitaminas: </string>
+    <string name="ingredientes_vit_a_label">A: </string>
+    <string name="ingredientes_vit_b1_label">B1: </string>
+    <string name="ingredientes_vit_b2_label">B2: </string>
+    <string name="ingredientes_vit_b3_label">B3: </string>
+    <string name="ingredientes_vit_b12_label">B12: </string>
+    <string name="ingredientes_vit_c_label">C: </string>
+    <string name="recetas_vista_ingredinetes_label">Lista de Ingredientes</string>
+    <string name="recetas_vista_preparacion_label">Preparación</string>
+    <string name="list_recetas_detalles_guion">-</string>
+    <string name="resultados_spinner_label">Ordenar Por: </string>
+
+    <string-array name="resultados_spinner_array">
+        <item>Mas Sanos</item>
+        <item>Menor Tiempo</item>
+        <item>Dificultad</item>
+        <item>Alfabéticamente</item>
+    </string-array>
+
+    <string name="title_activity_main_activity_tab">MainActivityTab</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

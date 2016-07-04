@@ -1,0 +1,153 @@
+<ScrollView
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+	    xmlns:tools="http://schemas.android.com/tools" 
+	    android:id="@+id/scrollView_activity_recetas_vista"
+	    android:layout_width="match_parent" 
+	    android:layout_height="match_parent"
+	    android:paddingBottom="10dp"
+	    android:background="@color/tabs_background">
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:padding="5dp" >
+	    	<LinearLayout 
+		        android:layout_width="match_parent"    
+				android:layout_height="wrap_content"
+				android:orientation="horizontal">
+		        <ImageView 
+		            android:id="@+id/receta_image"
+		            android:layout_width="wrap_content" 
+				    android:layout_height="match_parent"
+				    android:contentDescription="@null"
+				    android:src="@drawable/wok"/>
+		        
+			    <TextView
+			        android:id="@+id/receta_nombre"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:background="@color/greenCheckbox"
+			        android:textAppearance="@style/textSize_h1"
+			        android:textColor="@color/tabs_background"
+			        android:gravity="center"
+			        android:textStyle="bold" />
+		    </LinearLayout>
+	    	
+		    
+		    <TextView
+		        android:id="@+id/receta_categoria"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="3dp"
+		        android:drawableLeft="@drawable/recetas_vista_categoria"
+		        android:drawablePadding="1dp"
+		        android:textAppearance="@style/textSize_h2"
+		        android:textColor="@color/gray"
+		        android:text="Mejillones" />
+		    
+<!-- 		    <TextView android:id="@+id/receta_pais"
+		        android:layout_width="match_parent"
+		       	android:layout_height="wrap_content"
+		        android:layout_marginTop="3dp"
+		        android:drawableLeft="@drawable/recetas_vista_pais"
+		        android:drawablePadding="1dp"
+		        android:textAppearance="@style/textSize_h2"
+		        android:textColor="@color/gray"
+		        android:text="Macedonia" /> -->
+		    
+		     <LinearLayout
+		        android:id="@+id/layoutInfo"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="8dp"
+		        android:orientation="horizontal" >
+		    			  
+				    <TextView android:id="@+id/receta_tiempo"
+				        android:layout_width="0dp"
+			        	android:layout_height="wrap_content"
+			        	android:layout_weight="0.8"
+				        android:textAppearance="@style/textSize_h3"
+				        android:drawableLeft="@drawable/resultados_tiempo"
+				        android:drawablePadding="1dp"
+				        android:textColor="@color/gray"
+				        android:text="20m" />
+				    
+				    <TextView android:id="@+id/receta_dificultad"
+				        android:layout_width="0dp"
+			        	android:layout_height="wrap_content"
+			        	android:layout_weight="0.7"
+				        android:textAppearance="@style/textSize_h3"
+				        android:drawableLeft="@drawable/resultados_dificultad"
+				        android:drawablePadding="2dp"
+				        android:textColor="@color/gray"
+				        android:text="Media" />
+				    
+				    <TextView android:id="@+id/receta_porciones"
+				        android:layout_width="0dp"
+			       	    android:layout_height="wrap_content"
+			        	android:layout_weight="0.5"
+				        android:textAppearance="@style/textSize_h3"
+				        android:drawableLeft="@drawable/resultados_porciones"
+				        android:drawablePadding="3dp"
+				        android:textColor="@color/gray"
+				        android:text="2" />
+				    
+				    <TextView android:id="@+id/receta_salud"
+				        android:layout_width="0dp"
+			        	android:layout_height="wrap_content"
+			       	    android:layout_weight="1"
+				        android:textAppearance="@style/textSize_h3"
+				        android:drawablePadding="1dp"
+				        android:textColor="@color/gray"
+				        android:text="20% Sano" />
+		    </LinearLayout>
+		    
+		    <TextView
+		        android:id="@+id/ingredientes_titulo"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="10dp"
+		        android:gravity="center"
+		        android:text="@string/recetas_vista_ingredinetes_label"
+		        android:textAppearance="@style/textSize_h2"
+		        android:textStyle="bold"
+		        android:textColor="@color/greenCheckbox" />
+		     
+		
+		    <LinearLayout
+		        android:id="@+id/layoutIngredientes"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="5dp"
+		        android:orientation="vertical" >
+		        
+		        <LinearLayout
+		            android:id="@+id/listViewDetalles"
+		            android:layout_width="match_parent"
+		        	android:layout_height="wrap_content"
+		        	android:orientation="vertical">
+		        </LinearLayout>
+		        
+		    </LinearLayout>
+		   
+		    <TextView
+		        android:id="@+id/preparacion_titulo"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:text="@string/recetas_vista_preparacion_label"
+		        android:gravity="center"
+		        android:layout_marginTop="3dp"
+		        android:layout_marginBottom="3dp"
+		        android:textAppearance="@style/textSize_h2"
+		        android:textStyle="bold"
+		        android:textColor="@color/greenCheckbox" />
+			 
+		    <TextView
+		        android:id="@+id/receta_preparacion"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textAppearance="@style/textSize_h3"
+		        android:text="asdhiuashd asjdijasod ajsdiojasod asjdiajsido asdjiasj\n asjdioasjdo \n jhaiodjoasdjioasjdi" />
+	   
+	</LinearLayout>
+</ScrollView>
