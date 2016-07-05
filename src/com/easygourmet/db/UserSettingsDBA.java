@@ -1,4 +1,4 @@
-package com.easygourmet.beans.dao;
+package com.easygourmet.db;
 
 import java.sql.SQLException;
 
@@ -6,13 +6,12 @@ import android.app.Activity;
 import android.widget.CheckBox;
 
 import com.easygourmet.beans.UserSettings;
-import com.easygourmet.db.DBHelper;
 import com.easygourmet.main.R;
 import com.easygourmet.utils.Utils;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.UpdateBuilder;
 
-public class UserSettingsDAO {
+public class UserSettingsDBA {
 	/**
 	 * Setea los valores de los checkbox ubicados en de la 'activity_menu_principal.xml' en la base de datos.
 	 * 

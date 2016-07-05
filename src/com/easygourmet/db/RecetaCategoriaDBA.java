@@ -1,15 +1,14 @@
-package com.easygourmet.beans.dao;
+package com.easygourmet.db;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.easygourmet.beans.RecetaCategoria;
-import com.easygourmet.db.DBHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
-public class RecetaCategoriaDAO {
+public class RecetaCategoriaDBA {
 	
 	/**
 	 * Trae todos (getAll) las categorias de recetas de la base de datos.

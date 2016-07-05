@@ -19,8 +19,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.easygourmet.beans.Receta;
-import com.easygourmet.beans.dao.RecetaDAO;
 import com.easygourmet.db.DBHelper;
+import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.ResultadosAdapter;
 
@@ -46,15 +46,15 @@ public class Resultados extends ActionBarActivity {
 		ArrayList<Integer> ingredintesElegidos = intenet.getIntegerArrayListExtra("ingredientesElegidos");
 		
 		if(ingredintesElegidos != null){
-			this.recetas = RecetaDAO.getRecetasByIngredientes(helper, ingredintesElegidos);
+			this.recetas = RecetaDBA.getRecetasByIngredientes(helper, ingredintesElegidos);
 			if(this.recetas.size() < 1){
-				this.recetas = RecetaDAO.getRecetasByIngredientesAnyMatch(helper, ingredintesElegidos);
+				this.recetas = RecetaDBA.getRecetasByIngredientesAnyMatch(helper, ingredintesElegidos);
 			}
 			
 			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas, recetas);
 			
 		} else if(idCategoria != null){
-			this.recetas = RecetaDAO.getRecetasByCategoria(helper, idCategoria);
+			this.recetas = RecetaDBA.getRecetasByCategoria(helper, idCategoria);
 			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas, recetas);
 		}
 		

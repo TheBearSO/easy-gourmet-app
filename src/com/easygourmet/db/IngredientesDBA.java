@@ -1,15 +1,14 @@
-package com.easygourmet.beans.dao;
+package com.easygourmet.db;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.easygourmet.beans.Ingrediente;
-import com.easygourmet.db.DBHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
-public class IngredientesDAO {
+public class IngredientesDBA {
 	
 	/**
 	 * Trae todos (getAll) los ingredientes de la base de datos.

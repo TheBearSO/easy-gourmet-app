@@ -14,8 +14,8 @@ import android.widget.TextView;
 
 import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaDetalle;
-import com.easygourmet.beans.dao.RecetaDAO;
 import com.easygourmet.db.DBHelper;
+import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.RecetaDetalleAdapter;
 import com.easygourmet.utils.Utils;
@@ -38,9 +38,9 @@ public class RecetaView extends ActionBarActivity {
 		
 		Receta receta;
 		if(!recetaDelDia){
-			receta = RecetaDAO.getRecetaById(idReceta, this.helper);
+			receta = RecetaDBA.getRecetaById(idReceta, this.helper);
 		}else {
-			receta = RecetaDAO.getRecetaDelDia(this.helper);
+			receta = RecetaDBA.getRecetaDelDia(this.helper);
 		}
 		
 		setRecetaToView(receta);

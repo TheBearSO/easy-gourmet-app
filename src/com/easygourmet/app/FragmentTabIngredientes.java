@@ -18,8 +18,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.easygourmet.beans.Ingrediente;
-import com.easygourmet.beans.dao.IngredientesDAO;
 import com.easygourmet.db.DBHelper;
+import com.easygourmet.db.IngredientesDBA;
 import com.easygourmet.main.R;
 
 public class FragmentTabIngredientes extends Fragment {
@@ -38,7 +38,7 @@ public class FragmentTabIngredientes extends Fragment {
 		this.helper = new DBHelper(v.getContext());
 		
 		//TABS INGREDIENTES
-		List<Ingrediente> ingredientes = IngredientesDAO.getAllIntredientes(this.helper, Ingrediente.FIELD_NAME_nombre, true);
+		List<Ingrediente> ingredientes = IngredientesDBA.getAllIntredientes(this.helper, Ingrediente.FIELD_NAME_nombre, true);
 		this.adapterIngredientes = new ArrayAdapter<Ingrediente>(v.getContext(),  R.layout.list_ingredientes, R.id.nombre_ingrediente, ingredientes);
 		
 		initIngredintes(v);

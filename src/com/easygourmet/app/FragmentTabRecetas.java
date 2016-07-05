@@ -3,8 +3,8 @@ package com.easygourmet.app;
 import java.util.List;
 
 import com.easygourmet.beans.RecetaCategoria;
-import com.easygourmet.beans.dao.RecetaCategoriaDAO;
 import com.easygourmet.db.DBHelper;
+import com.easygourmet.db.RecetaCategoriaDBA;
 import com.easygourmet.main.R;
 
 import android.content.Intent;
@@ -44,7 +44,7 @@ public class FragmentTabRecetas extends Fragment {
 	 */
 	private void initRecetasCategorias(View v){
 		
-		List<RecetaCategoria> recetaCategorias = RecetaCategoriaDAO.getAllRecetasCategorias(this.helper, RecetaCategoria.FIELD_NAME_descripcion, true);
+		List<RecetaCategoria> recetaCategorias = RecetaCategoriaDBA.getAllRecetasCategorias(this.helper, RecetaCategoria.FIELD_NAME_descripcion, true);
 		this.adapterRecetaCategorias = new ArrayAdapter<RecetaCategoria>(v.getContext(),  R.layout.list_recetas_categorias, R.id.descripcion, recetaCategorias);
 		ListView listViewCategorias = (ListView) v.findViewById(R.id.listViewRecetasCategorias);
 		listViewCategorias.setAdapter(adapterRecetaCategorias);

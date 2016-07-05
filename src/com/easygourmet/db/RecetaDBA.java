@@ -1,4 +1,4 @@
-package com.easygourmet.beans.dao;
+package com.easygourmet.db;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,11 +8,10 @@ import java.util.List;
 import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaDetalle;
 import com.easygourmet.beans.UserSettings;
-import com.easygourmet.db.DBHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
 
-public class RecetaDAO {
+public class RecetaDBA {
 	
 	/**
 	 * Trae una receta de la base de datos por id de receta (idReceta).
@@ -45,7 +44,7 @@ public class RecetaDAO {
 	public static Receta getRecetaDelDia(DBHelper helper){
 		Receta recetaDelDia = new Receta();
 		try {
-			UserSettings us = UserSettingsDAO.getUserSettings(helper);
+			UserSettings us = UserSettingsDBA.getUserSettings(helper);
 			
 			Dao<Receta, Integer> dao = helper.getDao(Receta.class);
 			
@@ -144,7 +143,7 @@ public class RecetaDAO {
 	
 	private  static List<Receta> filterUserSettings(DBHelper helper, List<Receta> recetas){
 		
-		UserSettings us = UserSettingsDAO.getUserSettings(helper);
+		UserSettings us = UserSettingsDBA.getUserSettings(helper);
 		Iterator<Receta> it = recetas.iterator();
 		Receta r;
 		if(us.isCheckBoxCeliaco() && us.isCheckBoxVegetariano()){
