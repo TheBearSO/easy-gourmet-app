@@ -60,7 +60,7 @@ public class RecetaDetalleAdapter extends ArrayAdapter<RecetaDetalle>{
 
         if(row == null)
         {
-            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
             
             list_recetas = new List_RecetasDetalleXML();

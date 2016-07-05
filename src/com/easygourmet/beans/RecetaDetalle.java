@@ -27,6 +27,7 @@ public class RecetaDetalle {
 	@DatabaseField(canBeNull = false)
 	private float cantidad;
 	
+	@DatabaseField(canBeNull = false)
 	private String unidadMedida;
 	
 	/** Si es TRUE quiere decir que el ingrediente es indispensable para esa receta. */
@@ -91,9 +92,7 @@ public class RecetaDetalle {
 		this.esIndispensable = esIndispensable;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -104,12 +103,11 @@ public class RecetaDetalle {
 		result = prime * result
 				+ ((ingrediente == null) ? 0 : ingrediente.hashCode());
 		result = prime * result + ((receta == null) ? 0 : receta.hashCode());
+		result = prime * result
+				+ ((unidadMedida == null) ? 0 : unidadMedida.hashCode());
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -135,6 +133,11 @@ public class RecetaDetalle {
 			if (other.receta != null)
 				return false;
 		} else if (!receta.equals(other.receta))
+			return false;
+		if (unidadMedida == null) {
+			if (other.unidadMedida != null)
+				return false;
+		} else if (!unidadMedida.equals(other.unidadMedida))
 			return false;
 		return true;
 	}
