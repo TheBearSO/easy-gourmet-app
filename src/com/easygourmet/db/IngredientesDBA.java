@@ -45,19 +45,41 @@ public class IngredientesDBA {
 		List<Ingrediente> ingredientes = new ArrayList<>();
 		try {
 			Dao<Ingrediente, Integer> ingredienteDao = helper.getDao(Ingrediente.class);
-			QueryBuilder<Ingrediente, Integer> ingredientesQB = ingredienteDao.queryBuilder();
+			QueryBuilder<Ingrediente, Integer> qb = ingredienteDao.queryBuilder();
 			
 			System.out.println("VEGETARIANO: " + isVegetariano + " - VEGANO: " + isVegano + " - CELIACO: " + isCeliaco);
 			
-			if(isCeliaco && isVegetariano) ingredientesQB.where().eq(Ingrediente.FIELD_NAME_celiaco, true).and().eq(Ingrediente.FIELD_NAME_vegetariano, true);
-			else if(isCeliaco && isVegano) ingredientesQB.where().eq(Ingrediente.FIELD_NAME_celiaco, true).and().eq(Ingrediente.FIELD_NAME_vegano, true);
-			else if(isVegetariano) ingredientesQB.where().eq(Ingrediente.FIELD_NAME_vegetariano, true);
-			else if(isVegano) ingredientesQB.where().eq(Ingrediente.FIELD_NAME_vegano, true);
-			else if(isCeliaco) ingredientesQB.where().eq(Ingrediente.FIELD_NAME_celiaco, true);
+			if(isVegetariano){
+				if(!isVegano && !isCeliaco){
+					qb.where().eq(Ingrediente.FIELD_NAME_vegetariano, true);
+				}else if(isVegano && !isCeliaco){
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegetariano, true).and()
+					.eq(Ingrediente.FIELD_NAME_vegano, true);
+				}else if(!isVegano && isCeliaco){
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegetariano, true).and()
+					.eq(Ingrediente.FIELD_NAME_celiaco, true);
+				}else{
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegetariano, true).and()
+					.eq(Ingrediente.FIELD_NAME_vegano, true).and()
+					.eq(Ingrediente.FIELD_NAME_celiaco, true);
+				}
+			}else if(isVegano){
+				if(!isCeliaco){
+					qb.where().eq(Ingrediente.FIELD_NAME_vegano, true);
+				}else {
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegano, true).and()
+					.eq(Ingrediente.FIELD_NAME_celiaco, true);
+				}
+			}else if(isCeliaco){
+				qb.where().eq(Ingrediente.FIELD_NAME_celiaco, true);
+			}
 			
-			
-			ingredientesQB.orderBy(orderByColumnName, orderByAsc); 
-			ingredientes = ingredientesQB.query();
+			qb.orderBy(orderByColumnName, orderByAsc); 
+			ingredientes = qb.query();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

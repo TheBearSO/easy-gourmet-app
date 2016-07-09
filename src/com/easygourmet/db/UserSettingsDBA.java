@@ -2,11 +2,7 @@ package com.easygourmet.db;
 
 import java.sql.SQLException;
 
-import android.app.Activity;
-import android.widget.CheckBox;
-
 import com.easygourmet.beans.UserSettings;
-import com.easygourmet.main.R;
 import com.easygourmet.utils.Utils;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.UpdateBuilder;
@@ -18,42 +14,27 @@ public class UserSettingsDBA {
 	 * @param activity La activity en donde se ejecuta
 	 * @param helper El helper de la base de datos
 	 */
-	public static UserSettings setUserSettings(Activity activity, DBHelper helper){
+	public static UserSettings setUserSettings(DBHelper helper, boolean isVegetariano, boolean isVegano, boolean isCeliaco){
 		
 		UserSettings us = new UserSettings();
 		
+		us.setCheckBoxVegetariano(isVegetariano);
+		us.setCheckBoxVegano(isVegano);
+		us.setCheckBoxCeliaco(isCeliaco);
+		
 		try {
-			
-			boolean idVegetariano = ((CheckBox) activity.findViewById(R.id.checkBoxVegetariano)).isChecked();
-			boolean idVegano = ((CheckBox) activity.findViewById(R.id.checkBoxVegano)).isChecked();
-			boolean idCeliaco = ((CheckBox) activity.findViewById(R.id.checkBoxCeliaco)).isChecked();
-			
-			us.setCheckBoxVegetariano(idVegetariano);
-			us.setCheckBoxVegano(idVegano);
-			us.setCheckBoxCeliaco(idCeliaco);
 			
 			Dao<UserSettings, String> dao = helper.getDao(UserSettings.class);
 			
 			UpdateBuilder<UserSettings, String> ub = dao.updateBuilder();
 			
-			ub.updateColumnValue(UserSettings.FIELD_NAME_checkBoxVegetariano, Utils.booleanToInt(idVegetariano));
-			ub.updateColumnValue(UserSettings.FIELD_NAME_checkBoxVegano, Utils.booleanToInt(idVegano));
-			ub.updateColumnValue(UserSettings.FIELD_NAME_checkBoxCeliaco, Utils.booleanToInt(idCeliaco));
+			ub.updateColumnValue(UserSettings.FIELD_NAME_checkBoxVegetariano, Utils.booleanToInt(isVegetariano));
+			ub.updateColumnValue(UserSettings.FIELD_NAME_checkBoxVegano, Utils.booleanToInt(isVegano));
+			ub.updateColumnValue(UserSettings.FIELD_NAME_checkBoxCeliaco, Utils.booleanToInt(isCeliaco));
 			
 			ub.where().eq(UserSettings.FIELD_NAME_id, UserSettings.FIELD_VALUE_id);
 	
 			ub.update();
-			
-//			final LinearLayout linearLayout = (LinearLayout) activity.findViewById(R.id.menu_principal_layout_checkboxes);
-			
-//			Utils.disableEnableControls(false, linearLayout);
-			
-//			new Handler().postDelayed(new Runnable() {
-//				@Override
-//				public void run() {
-//					Utils.disableEnableControls(true, linearLayout);
-//				}
-//			}, 25);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
