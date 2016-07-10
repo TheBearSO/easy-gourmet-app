@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.easygourmet.beans.Ingrediente;
 import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaDetalle;
 import com.easygourmet.beans.UserSettings;
@@ -33,6 +34,66 @@ public class RecetaDBA {
 		}
 		
 		return r;
+	}
+	
+	/**
+	 * Retorna una receta de la base de datos al azar.
+	 * 
+	 * @param  helper El helper de la base de datos
+	 * @return Un Objeto {@link com.easygourmet.beans.Receta}
+	 */
+	public static List<Receta> getAllWhere(DBHelper helper){
+		List<Receta> recetas = new ArrayList<Receta>();
+		
+		try {
+			UserSettings us = UserSettingsDBA.getUserSettings(helper);
+			boolean isVegetariano = us.isCheckBoxVegetariano();
+			boolean isVegano = us.isCheckBoxVegano();
+			boolean isCeliaco = us.isCheckBoxCeliaco();
+			
+			Dao<Receta, Integer> dao = helper.getDao(Receta.class);
+			
+			QueryBuilder<Receta, Integer> qb = dao.queryBuilder();
+			
+			if(isVegetariano){
+				if(!isVegano && !isCeliaco){
+					qb.where().eq(Ingrediente.FIELD_NAME_vegetariano, true);
+				}else if(isVegano && !isCeliaco){
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegetariano, true).and()
+					.eq(Ingrediente.FIELD_NAME_vegano, true);
+				}else if(!isVegano && isCeliaco){
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegetariano, true).and()
+					.eq(Ingrediente.FIELD_NAME_celiaco, true);
+				}else{
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegetariano, true).and()
+					.eq(Ingrediente.FIELD_NAME_vegano, true).and()
+					.eq(Ingrediente.FIELD_NAME_celiaco, true);
+				}
+			}else if(isVegano){
+				if(!isCeliaco){
+					qb.where().eq(Ingrediente.FIELD_NAME_vegano, true);
+				}else {
+					qb.where()
+					.eq(Ingrediente.FIELD_NAME_vegano, true).and()
+					.eq(Ingrediente.FIELD_NAME_celiaco, true);
+				}
+			}else if(isCeliaco){
+				qb.where().eq(Ingrediente.FIELD_NAME_celiaco, true);
+			}
+			
+			
+			qb.orderBy(Receta.FIELD_NAME_idReceta, false);
+			
+			recetas = qb.query();
+			
+		} catch (SQLException e) {
+			return recetas;
+		}
+		
+		return recetas;
 	}
 	
 	/**

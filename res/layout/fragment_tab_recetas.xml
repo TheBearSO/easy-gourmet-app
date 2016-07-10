@@ -5,12 +5,19 @@
      android:id="@+id/tabReceta"
      android:orientation="vertical" >
     
-		<ListView
+<!-- 		<ListView
             android:id="@+id/listViewRecetasCategorias"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:drawSelectorOnTop="false" >
-        </ListView>
+        </ListView> -->
+
+		    <TextView style="@style/line" />
+		    <ListView
+		        android:id="@+id/recetas"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent">
+		    </ListView>
 </LinearLayout>

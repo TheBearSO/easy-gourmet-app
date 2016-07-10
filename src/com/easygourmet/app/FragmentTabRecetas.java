@@ -2,11 +2,6 @@ package com.easygourmet.app;
 
 import java.util.List;
 
-import com.easygourmet.beans.RecetaCategoria;
-import com.easygourmet.db.DBHelper;
-import com.easygourmet.db.RecetaCategoriaDBA;
-import com.easygourmet.main.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,16 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
+import com.easygourmet.beans.Receta;
+import com.easygourmet.db.DBHelper;
+import com.easygourmet.db.RecetaDBA;
+import com.easygourmet.main.R;
+import com.easygourmet.ui.ResultadosAdapter;
 
 public class FragmentTabRecetas extends Fragment {
 	
 	private DBHelper helper;
 	
-	/** Es un adapter de {@link com.easygourmet.beans.RecetaCategoria}. Se utiliza en la tab titulada "Recetas" */
-	private ArrayAdapter<RecetaCategoria> adapterRecetaCategorias;
+	/** Es un adapter que se utiliza en la tab titulada "Recetas" */
+	private ResultadosAdapter adapterRecetas;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
@@ -34,7 +34,7 @@ public class FragmentTabRecetas extends Fragment {
 		
 		this.helper = new DBHelper(v.getContext());
 		
-		initRecetasCategorias(v);
+		initRecetas(v);
 		
 		return v;
 	}
@@ -42,21 +42,24 @@ public class FragmentTabRecetas extends Fragment {
 	/**
 	  * Inicializa todos los elementos y eventos utilizados en la tab "Recetas".
 	 */
-	private void initRecetasCategorias(View v){
+	private void initRecetas(View v){
 		
-		List<RecetaCategoria> recetaCategorias = RecetaCategoriaDBA.getAllRecetasCategorias(this.helper, RecetaCategoria.FIELD_NAME_descripcion, true);
-		this.adapterRecetaCategorias = new ArrayAdapter<RecetaCategoria>(v.getContext(),  R.layout.list_recetas_categorias, R.id.descripcion, recetaCategorias);
-		ListView listViewCategorias = (ListView) v.findViewById(R.id.listViewRecetasCategorias);
-		listViewCategorias.setAdapter(adapterRecetaCategorias);
+		List<Receta> recetas = RecetaDBA.getAllWhere(this.helper);
+		this.adapterRecetas = new ResultadosAdapter(v.getContext(),  R.layout.list_recetas,recetas);
+		ListView listaRecetas = (ListView) v.findViewById(R.id.recetas);
+		listaRecetas.setAdapter(this.adapterRecetas);
 		
-		listViewCategorias.setOnItemClickListener(new OnItemClickListener() {
+		listaRecetas.setOnItemClickListener(new OnItemClickListener() {
+
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				RecetaCategoria rc = FragmentTabRecetas.this.adapterRecetaCategorias.getItem(position);
-				Intent i = new Intent(getActivity(), Resultados.class);
-				i.putExtra("idCategoria", rc.getId());
+				Receta r = adapterRecetas.getItem(position);
+				
+				Intent i = new Intent(getActivity(), RecetaView.class);
+				i.putExtra("idReceta", r.getIdReceta());
 				FragmentTabRecetas.this.startActivity(i);
 			}
-	    });
+			
+		});
 	}
 }
