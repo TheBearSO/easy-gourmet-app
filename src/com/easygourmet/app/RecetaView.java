@@ -71,8 +71,10 @@ public class RecetaView extends ActionBarActivity {
 		System.out.println(r);
 		
 		ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
-		String url = Utils.getColudinaryURL(String.valueOf(r.getIdReceta()), 100, 100);
-		Picasso.with(getApplicationContext()).load(url).into(receta_image);
+		String url = Utils.getColudinaryURL(String.valueOf(r.getIdReceta()), 250, 196);
+		Picasso.with(getApplicationContext())
+			.load(url)
+			.into(receta_image);
 		
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		
