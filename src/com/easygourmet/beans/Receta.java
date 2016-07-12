@@ -38,7 +38,7 @@ public class Receta {
 	/**
 	 * Es el nombre principal de la receta.
 	*/
-	@DatabaseField(canBeNull = false, width = 80, unique = true)
+	@DatabaseField(canBeNull = false, width = 30, unique = true)
 	private String nombre;
 	
 	/**

@@ -84,10 +84,10 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
 	        list_recetas.dificultad = (TextView) view.findViewById(R.id.dificultad);
 	        list_recetas.porciones = (TextView) view.findViewById(R.id.porciones);
 	        
-	        textViewSalud = (TextView) view.findViewById(R.id.salud);;
+	        //textViewSalud = (TextView) view.findViewById(R.id.salud);;
 	        list_recetas.salud = textViewSalud;
 	        
-	        Picasso.with(getContext()).load(Utils.getColudinaryURL(String.valueOf(r.getIdReceta()), 128, 128)).into(list_recetas.resultados_image);
+	        Picasso.with(getContext()).load(Utils.getColudinaryURL(String.valueOf(r.getIdReceta()), 150, 150)).into(list_recetas.resultados_image);
 	        
 	        list_recetas.nombre.setText(r.getNombre());
 	        list_recetas.descripcion.setText(r.getDescripcion());
@@ -95,24 +95,24 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
 	        list_recetas.dificultad.setText(r.getDificultad());
 	        list_recetas.porciones.setText(Integer.toString(r.getPorciones()));
 	        
-	        if(textViewSalud != null){
-	        	int rojo = Color.rgb(178,34,34);
-	        	int amarillo = Color.rgb(190, 165, 0);
-	        	int verde = Color.rgb(0,100,0);
-	        	
-	        	int salud = r.getSalud();
-	        	if(salud > 67){
-	        		textViewSalud.setTextColor(verde);
-	        		list_recetas.salud.setText(salud + "% Sano");
-	        	}else if(salud > 33 && salud <= 67){
-	        		textViewSalud.setTextColor(amarillo);
-	        		list_recetas.salud.setText(salud + "% Sano");
-	        	}else{
-	        		textViewSalud.setTextColor(rojo);
-	        		list_recetas.salud.setText(salud + "% Sano");
-	        	}
-	        	
-	        }
+//	        if(textViewSalud != null){
+//	        	int rojo = Color.rgb(178,34,34);
+//	        	int amarillo = Color.rgb(190, 165, 0);
+//	        	int verde = Color.rgb(0,100,0);
+//	        	
+//	        	int salud = r.getSalud();
+//	        	if(salud > 67){
+//	        		textViewSalud.setTextColor(verde);
+//	        		list_recetas.salud.setText(salud + "% Sano");
+//	        	}else if(salud > 33 && salud <= 67){
+//	        		textViewSalud.setTextColor(amarillo);
+//	        		list_recetas.salud.setText(salud + "% Sano");
+//	        	}else{
+//	        		textViewSalud.setTextColor(rojo);
+//	        		list_recetas.salud.setText(salud + "% Sano");
+//	        	}
+//	        	
+//	        }
         }
         
         return view;

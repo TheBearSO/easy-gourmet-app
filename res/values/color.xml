@@ -20,10 +20,13 @@
 	 <color name="black_medium">#333333</color>
 	 <color name="black_smooth">#888888</color>
 	 <color name="gray_smooth">#c1c1c1</color>
-	 <color name="tabs_background">#F2F2F2</color>
+	 <color name="tabs_background">#F5F5F5</color>
 	 <color name="resultados_background">#F0FFF0</color>
 	 <color name="redMatrin">#FF6347</color>
+	 
 	 <color name="greenCheckbox">#00968C</color>
 	 <color name="greenCheckboxLigth">#45B2AB</color>
+	 
+	 <!-- #462066 #FFB85F #FF7A5A #00AAA0 #8ED2C9 #FCF4D9 -->
 	 
 </resources>

@@ -19,21 +19,15 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal" >
-
-            <ImageView
-                android:id="@+id/icono_principal"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:contentDescription="@null"
-                android:paddingRight="3dp"
-                android:src="@drawable/icon_principal" />
-
+            
             <TextView
                 android:id="@+id/tabNevera_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/app_name"
-                android:textAppearance="@style/textSize_h0" />
+                android:textAppearance="@style/textSize_h0"
+                android:drawableLeft="@drawable/icon_principal" 
+                android:drawablePadding="6dp" />
         </LinearLayout>
 
         <AutoCompleteTextView
