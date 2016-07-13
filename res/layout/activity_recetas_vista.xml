@@ -4,14 +4,14 @@
 	    android:id="@+id/scrollView_activity_recetas_vista"
 	    android:layout_width="match_parent" 
 	    android:layout_height="match_parent"
-	    android:paddingBottom="10dp"
-	    android:background="@color/tabs_background">
+	    android:background="#ededed">
 	
 	<LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical" >
 
+	    	<!-- Imagen -->
 		    <RelativeLayout 
 			        android:layout_width="match_parent"    
 					android:layout_height="196dp"
@@ -27,146 +27,227 @@
 				    android:src="@drawable/wok" />
 			</RelativeLayout>
 
+		    <!-- Nombre Receta -->
 	    	<LinearLayout 
 		        android:layout_width="match_parent"    
 				android:layout_height="wrap_content"
-				android:minHeight="48dp"
-				android:orientation="horizontal">
+				android:orientation="horizontal"
+				android:background="@color/greenCheckbox">
 		        
 			    <TextView
 			        android:id="@+id/receta_nombre"
 			        android:layout_width="match_parent"
 			        android:layout_height="match_parent"
-			        android:background="@color/greenCheckbox"
+			        android:paddingTop="8dp"
+					android:paddingBottom="6dp"
 			        android:textAppearance="@style/textSize_h1"
 			        android:textColor="@color/tabs_background"
 			        android:gravity="center"
-			        android:textStyle="bold" />
+			        android:textStyle="bold"
+			        android:text="Verga con SAL" />
 		    </LinearLayout>
-	    	
+		    
+	    	<!-- Categoria -->
+	    	<LinearLayout 
+			        android:layout_width="match_parent"    
+					android:layout_height="wrap_content"
+					android:paddingBottom="8dp"
+					android:orientation="horizontal"
+					android:gravity="center"
+					android:background="@color/greenCheckbox">
+			        
+				    <TextView
+				        android:id="@+id/receta_categoria"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textAppearance="@style/textSize_h2"
+				        android:textColor="@color/tabs_background"
+				        android:drawableLeft="@drawable/recetas_vista_categoria_white"
+				        android:drawablePadding="4dp"
+				        android:text="Mejillones" />
+			</LinearLayout>
+    	
+	    	<!-- Info General -->
 		   <LinearLayout 
 		        android:layout_width="match_parent"    
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
 				android:padding="8dp"
-				android:background="@color/greenCheckboxLigth">
-			    <TextView
-			        android:id="@+id/receta_categoria"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_marginTop="3dp"
-			        android:layout_marginBottom="6dp"
-			        android:textAppearance="@style/textSize_h2"
-			        android:textColor="@color/tabs_background"
-			        android:gravity="center"
-			        android:text="Mejillones" />
-			    
-			    
+				android:background="@color/greenCheckboxLigth"
+				android:gravity="center"
+				android:layout_gravity="center"> 
+				
 			     <LinearLayout
 			        android:id="@+id/layoutInfo"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:layout_marginTop="8dp"
 			        android:orientation="horizontal" >
-			    			  
-					    <TextView android:id="@+id/receta_tiempo"
+			    		 <LinearLayout
 					        android:layout_width="0dp"
-				        	android:layout_height="wrap_content"
-				        	android:layout_weight="1"
-					        android:textAppearance="@style/textSize_h3"
-					        android:drawableTop="@drawable/resultados_tiempo_white"
-					        android:drawablePadding="3dp"
-					        android:gravity="center"
-					        android:textColor="@color/tabs_background"
-					        android:text="20m" />
-					    
-					    <TextView android:id="@+id/receta_dificultad"
-					        android:layout_width="0dp"
-				        	android:layout_height="wrap_content"
-				        	android:layout_weight="1"
-					        android:textAppearance="@style/textSize_h3"
-					        android:drawableTop="@drawable/resultados_dificultad_white"
-					        android:gravity="center"
-					        android:drawablePadding="3dp"
-					        android:textColor="@color/tabs_background"
-					        android:text="Media" />
-
-					    <TextView
-					        android:id="@+id/receta_porciones"
-					        android:layout_width="0dp"
-					        android:layout_height="wrap_content"
 					        android:layout_weight="1"
-					        android:drawableTop="@drawable/resultados_porciones_white"
-					        android:drawablePadding="3dp"
-					        android:gravity="center"
-					        android:text="2"
-					        android:textAppearance="@style/textSize_h3"
-					        android:textColor="@color/tabs_background" />
+					        android:layout_height="wrap_content"
+					        android:orientation="vertical"
+					        android:gravity="center" >
+					         	<TextView 
+					         	    android:layout_width="wrap_content"
+						        	android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h4"
+							        android:drawableTop="@drawable/resultados_tiempo_white"
+							        android:drawablePadding="3dp"
+							        android:textColor="@color/tabs_background"
+							        android:text="Tiempo" />
+					         		  
+							    <TextView android:id="@+id/receta_tiempo"
+							        android:layout_width="wrap_content"
+						        	android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h3"
+							        android:textColor="@color/tabs_background"
+							        android:text="20m" />
+					    </LinearLayout>
 					    
-					    <TextView android:id="@+id/receta_salud"
+			    		 <LinearLayout
 					        android:layout_width="0dp"
-				        	android:layout_height="wrap_content"
-				       	    android:layout_weight="1"
-					        android:textAppearance="@style/textSize_h3"
-					        android:drawableTop="@drawable/resultados_salud"
-					        android:drawablePadding="3dp"
-					        android:textColor="@color/tabs_background"
-					        android:text="20% Sano" />
+					        android:layout_weight="1"
+					        android:layout_height="wrap_content"
+					        android:orientation="vertical"
+					        android:gravity="center" >
+					         	<TextView 
+					         	    android:layout_width="wrap_content"
+						        	android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h4"
+							        android:drawableTop="@drawable/resultados_dificultad_white"
+							        android:drawablePadding="3dp"
+							        android:textColor="@color/tabs_background"
+							        android:text="Dificultad" />
+					         		  
+							    <TextView  android:id="@+id/receta_dificultad"
+							        android:layout_width="wrap_content"
+						        	android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h3"
+							        android:textColor="@color/tabs_background"
+							        android:text="Media" />
+					    </LinearLayout>
+					    
+			    		 <LinearLayout
+					        android:layout_width="0dp"
+					        android:layout_weight="1"
+					        android:layout_height="wrap_content"
+					        android:orientation="vertical"
+					        android:gravity="center" >
+					         	<TextView 
+					         	    android:layout_width="wrap_content"
+						        	android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h4"
+							        android:drawableTop="@drawable/resultados_porciones_white"
+							        android:drawablePadding="3dp"
+							        android:textColor="@color/tabs_background"
+							        android:text="Porciones" />
+					         		  
+							    <TextView
+							        android:id="@+id/receta_porciones"
+							        android:layout_width="wrap_content"
+							        android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h3"
+							        android:textColor="@color/tabs_background"
+							        android:text="2" />
+					    </LinearLayout>
+					    
+					    <LinearLayout
+					        android:layout_width="0dp"
+					        android:layout_weight="1"
+					        android:layout_height="wrap_content"
+					        android:orientation="vertical"
+					        android:gravity="center" >
+					         	<TextView 
+					         	    android:layout_width="wrap_content"
+						        	android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h4"
+							        android:drawableTop="@drawable/resultados_salud"
+							        android:drawablePadding="3dp"
+							        android:textColor="@color/tabs_background"
+							        android:text="Salud" />
+					         		  
+							    <TextView
+							        android:id="@+id/receta_salud"
+							        android:layout_width="wrap_content"
+							        android:layout_height="wrap_content"
+							        android:textAppearance="@style/textSize_h3"
+							        android:textColor="@color/tabs_background"
+							        android:text="78% Sano" />
+					    </LinearLayout>
 			    </LinearLayout>
 		    </LinearLayout>
 		    
+		   <!-- Container preparacion y lista -->
 		   <LinearLayout 
 		        android:layout_width="match_parent"    
 				android:layout_height="wrap_content"
-				android:orientation="vertical"
-				android:layout_margin="5dp">
+				android:orientation="vertical">
 		    
-			    <TextView
-			        android:id="@+id/ingredientes_titulo"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_marginTop="10dp"
-			        android:gravity="center"
-			        android:text="@string/recetas_vista_ingredinetes_label"
-			        android:textAppearance="@style/textSize_h2"
-			        android:textStyle="bold"
-			        android:textColor="@color/greenCheckbox" />
-			     
-			
-			    <LinearLayout
-			        android:id="@+id/layoutIngredientes"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:layout_marginTop="5dp"
-			        android:orientation="vertical" >
-			        
-			        <LinearLayout
-			            android:id="@+id/listViewDetalles"
-			            android:layout_width="match_parent"
-			        	android:layout_height="wrap_content"
-			        	android:orientation="vertical">
-			        </LinearLayout>
-			        
-			    </LinearLayout>
+		       <!-- Lista de ingredientes -->
+		       <LinearLayout 
+		        android:layout_width="match_parent"    
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:background="@drawable/border"
+				android:layout_marginTop="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_marginLeft="5dp"
+				android:padding="5dp">
+				    <TextView
+				        android:id="@+id/ingredientes_titulo"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:gravity="center"
+				        android:text="@string/recetas_vista_ingredinetes_label"
+				        android:textAppearance="@style/textSize_h2"
+				        android:textStyle="bold"
+				        android:textColor="@color/greenCheckbox" />
+				     
+				    <LinearLayout
+				        android:id="@+id/layoutIngredientes"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="5dp"
+				        android:orientation="vertical" >
+				        
+				        <LinearLayout
+				            android:id="@+id/listViewDetalles"
+				            android:layout_width="match_parent"
+				        	android:layout_height="wrap_content"
+				        	android:orientation="vertical">
+				        </LinearLayout>
+				        
+				    </LinearLayout>
+			   </LinearLayout>
 			   
-			    <TextView
-			        android:id="@+id/preparacion_titulo"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:text="@string/recetas_vista_preparacion_label"
-			        android:gravity="center"
-			        android:layout_marginTop="3dp"
-			        android:layout_marginBottom="3dp"
-			        android:textAppearance="@style/textSize_h2"
-			        android:textStyle="bold"
-			        android:textColor="@color/greenCheckbox" />
-				 
-			    <TextView
-			        android:id="@+id/receta_preparacion"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:textAppearance="@style/textSize_h3"
-			        android:text="asdhiuashd asjdijasod ajsdiojasod asjdiajsido asdjiasj\n asjdioasjdo \n jhaiodjoasdjioasjdi" />
+		       <!-- Preparacion -->
+			   <LinearLayout 
+		        android:layout_width="match_parent"    
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_margin="5dp"
+				android:padding="5dp"
+				android:background="@drawable/border">
+				    <TextView
+				        android:id="@+id/preparacion_titulo"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:text="@string/recetas_vista_preparacion_label"
+				        android:gravity="center"
+				        android:textAppearance="@style/textSize_h2"
+				        android:textStyle="bold"
+				        android:textColor="@color/greenCheckbox" />
+					 
+				    <TextView
+				        android:id="@+id/receta_preparacion"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_marginTop="5dp"
+				        android:textAppearance="@style/textSize_h3"
+				        android:text="asdhiuashd asjdijasod ajsdiojasod asjdiajsido asdjiasj\n asjdioasjdo \n jhaiodjoasdjioasjdi" />
+	   			</LinearLayout>
 	   </LinearLayout>
 	</LinearLayout>
 </ScrollView>

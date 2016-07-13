@@ -15,7 +15,9 @@
         android:layout_width="0dp"
         android:layout_weight="0.22"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/textSize_h3" /> 
+        android:textAppearance="@style/textSize_h3"
+        android:textColor="@color/greenCheckbox"
+        android:textStyle="bold" /> 
     <TextView 
         android:id="@+id/list_recetas_detalles_nombreIngrediente"
        	android:layout_width="0dp"
