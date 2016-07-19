@@ -3,26 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="5dp" >
+    android:padding="5dp"
+    android:divider="@null"
+    android:dividerHeight="0dp" >
     <TextView 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.03"
-        android:textAppearance="@style/textSize_h3"
+        android:textSize="16sp"
         android:text="@string/list_recetas_detalles_guion" /> 
 	 <TextView 
 	    android:id="@+id/list_recetas_detalles_cantidad"
         android:layout_width="0dp"
-        android:layout_weight="0.22"
+        android:layout_weight="0.23"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/textSize_h3"
+        android:textSize="16sp"
         android:textColor="@color/greenCheckbox"
-        android:textStyle="bold" /> 
+        android:textStyle="bold"
+        android:text="1u." /> 
     <TextView 
         android:id="@+id/list_recetas_detalles_nombreIngrediente"
        	android:layout_width="0dp"
-       	android:layout_weight="0.75"
+       	android:layout_weight="0.74"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/textSize_h3" /> 
+        android:textSize="16sp"
+        android:textColor="#555"
+        android:text="Zanahoria" /> 
            
 </LinearLayout>
