@@ -3,8 +3,10 @@ package com.easygourmet.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -12,11 +14,28 @@ import android.widget.TabWidget;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 /**
  * La Clase Utils, la cual contiene funciones static útiles que se utilizan en muchas partes del sistema.
  */
 public class Utils {
+	
+	public class MyListener implements View.OnClickListener 
+	{
+	    private View mView;
+
+	    public MyListener(View v) {
+	        mView = v;
+	    }
+
+	    @Override
+	    public void onClick(View v) {
+	        // Use mView here if needed             
+	    }
+	}
 	
 	public static final String URL_CLOUDINARY_DB_JSON = "http://res.cloudinary.com/dwt3ti4fn/raw/upload/v1448830509/db.json";
 	
@@ -50,7 +69,7 @@ public class Utils {
 	 * @param height El alto que queremos setear a la imagen.
 	 * @return Un string con la url (coludinary url).
 	 */
-	public static String getColudinaryURL(String fileName, int width, int height){
+	private static String getColudinaryURL(String fileName, int width, int height){
 		Map<String, String> config = new HashMap<>();
 		config.put("cloud_name", "dwt3ti4fn");
 		config.put("api_key", "862626225766584");
@@ -64,6 +83,39 @@ public class Utils {
 							   ).generate(fileName);
 		
 		return url;
+	}
+	
+	public static void loadImage(final Context context, String fileName, int width, int height, final ImageView img){
+		
+		final String url = getColudinaryURL(fileName, width, height);
+		
+		Picasso.with(context)
+		.load(url)
+		.networkPolicy(NetworkPolicy.OFFLINE)
+		.into(img, new Callback() {
+		    @Override
+		    public void onSuccess() {
+
+		    }
+
+		    @Override
+		    public void onError() {
+		        //Try again online if cache failed
+		        Picasso.with(context)
+		                .load(url)
+		                .into(img, new Callback() {
+		            @Override
+		            public void onSuccess() {
+
+		            }
+
+		            @Override
+		            public void onError() {
+		                
+		            }
+		        });
+		    }
+		});
 	}
 	
 	/**

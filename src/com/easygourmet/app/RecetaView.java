@@ -2,16 +2,19 @@ package com.easygourmet.app;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.easygourmet.beans.Ingrediente;
 import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaDetalle;
 import com.easygourmet.db.DBHelper;
@@ -19,11 +22,12 @@ import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.RecetaDetalleAdapter;
 import com.easygourmet.utils.Utils;
-import com.squareup.picasso.Picasso;
 
 public class RecetaView extends ActionBarActivity {
 
 	private DBHelper helper;
+	
+	private RecetaDetalleAdapter adapterRecetaDetalles;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +74,9 @@ public class RecetaView extends ActionBarActivity {
 		
 		System.out.println(r);
 		
-		ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
-		String url = Utils.getColudinaryURL(String.valueOf(r.getIdReceta()), 300, 200);
-		Picasso.with(getApplicationContext())
-			.load(url)
-			.into(receta_image);
-		
+		final ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
+		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 300, 200, receta_image);
+	
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		
 		TextView receta_categoria = (TextView) sv.findViewById(R.id.receta_categoria);
@@ -97,7 +98,7 @@ public class RecetaView extends ActionBarActivity {
 		receta_preparacion.setText(r.getPreparacion());
 		
 		//lista de ingredinetes de la receta vista
-		RecetaDetalleAdapter adapterRecetaDetalles = new RecetaDetalleAdapter(this, R.layout.list_recetas_detalles, new ArrayList<RecetaDetalle>(r.getDetalles()));
+		adapterRecetaDetalles = new RecetaDetalleAdapter(this, R.layout.list_recetas_detalles, new ArrayList<RecetaDetalle>(r.getDetalles()));
 		
 		LinearLayout layoutDetalles = (LinearLayout) findViewById(R.id.listViewDetalles);
 		

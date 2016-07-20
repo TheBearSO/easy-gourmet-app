@@ -61,6 +61,10 @@ public class Ingrediente {
 	@DatabaseField
 	private double kcal;
 	
+	/** La Salud del alimento. */
+	@DatabaseField
+	private int salud;
+	
 	/** Los detalles en los que aparece el ingrediente. */
 	@ForeignCollectionField(eager = true)
 	private ForeignCollection<RecetaDetalle> detalles;
@@ -134,6 +138,13 @@ public class Ingrediente {
 		this.kcal = kcal;
 	}
 	
+	public int getSalud() {
+		return salud;
+	}
+
+	public void setSalud(int salud) {
+		this.salud = salud;
+	}
 
 	public ForeignCollection<RecetaDetalle> getDetalles() {
 		return detalles;
@@ -143,6 +154,71 @@ public class Ingrediente {
 		this.detalles = detalles;
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (celiaco ? 1231 : 1237);
+		result = prime * result + ((coste == null) ? 0 : coste.hashCode());
+		result = prime * result
+				+ ((detalles == null) ? 0 : detalles.hashCode());
+		result = prime * result + idIngrediente;
+		long temp;
+		temp = Double.doubleToLongBits(kcal);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + salud;
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + (vegano ? 1231 : 1237);
+		result = prime * result + (vegetariano ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ingrediente other = (Ingrediente) obj;
+		if (celiaco != other.celiaco)
+			return false;
+		if (coste == null) {
+			if (other.coste != null)
+				return false;
+		} else if (!coste.equals(other.coste))
+			return false;
+		if (detalles == null) {
+			if (other.detalles != null)
+				return false;
+		} else if (!detalles.equals(other.detalles))
+			return false;
+		if (idIngrediente != other.idIngrediente)
+			return false;
+		if (Double.doubleToLongBits(kcal) != Double
+				.doubleToLongBits(other.kcal))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (salud != other.salud)
+			return false;
+		if (tipo == null) {
+			if (other.tipo != null)
+				return false;
+		} else if (!tipo.equals(other.tipo))
+			return false;
+		if (vegano != other.vegano)
+			return false;
+		if (vegetariano != other.vegetariano)
+			return false;
+		return true;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

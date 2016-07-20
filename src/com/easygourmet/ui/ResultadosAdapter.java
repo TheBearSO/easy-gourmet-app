@@ -3,7 +3,6 @@ package com.easygourmet.ui;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import com.easygourmet.beans.Receta;
 import com.easygourmet.main.R;
 import com.easygourmet.utils.Utils;
-import com.squareup.picasso.Picasso;
 
 /**
  * Custom adapter de la clase {@link com.easygourmet.beans.Receta}.
@@ -87,7 +85,7 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
 	        //textViewSalud = (TextView) view.findViewById(R.id.salud);;
 	        list_recetas.salud = textViewSalud;
 	        
-	        Picasso.with(getContext()).load(Utils.getColudinaryURL(String.valueOf(r.getIdReceta()), 150, 150)).into(list_recetas.resultados_image);
+	        Utils.loadImage(getContext(), String.valueOf(r.getIdReceta()), 160, 160, list_recetas.resultados_image);
 	        
 	        list_recetas.nombre.setText(r.getNombre());
 	        list_recetas.descripcion.setText(r.getDescripcion());
