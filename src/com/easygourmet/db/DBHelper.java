@@ -3,6 +3,7 @@ package com.easygourmet.db;
 import java.sql.SQLException;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.android.AndroidConnectionSource;
 import com.j256.ormlite.android.DatabaseTableConfigUtil;
@@ -13,11 +14,28 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class DBHelper extends SQLiteAssetHelper {
 	
+	public static DBHelper helper;
+	
     private static String DATABASE_NAME = "easygourmet.db";
     private static final int DATABASE_VERSION = 3;
     
     protected AndroidConnectionSource mConnectionSource = new AndroidConnectionSource(this);
 
+    public static synchronized DBHelper getHelper(Context context){
+    	if(helper == null){
+    		helper = new DBHelper(context);
+    	}
+    	return helper;
+    }
+    
+    public static synchronized SQLiteDatabase getReadDB(Context context){
+    	return getHelper(context).getReadableDatabase();
+    }
+    
+    public static synchronized SQLiteDatabase getWriteDB(Context context){
+    	return getHelper(context).getWritableDatabase();
+    }
+    
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

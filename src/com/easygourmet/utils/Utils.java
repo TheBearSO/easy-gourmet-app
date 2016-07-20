@@ -23,20 +23,6 @@ import com.squareup.picasso.Picasso;
  */
 public class Utils {
 	
-	public class MyListener implements View.OnClickListener 
-	{
-	    private View mView;
-
-	    public MyListener(View v) {
-	        mView = v;
-	    }
-
-	    @Override
-	    public void onClick(View v) {
-	        // Use mView here if needed             
-	    }
-	}
-	
 	public static final String URL_CLOUDINARY_DB_JSON = "http://res.cloudinary.com/dwt3ti4fn/raw/upload/v1448830509/db.json";
 	
 	/**

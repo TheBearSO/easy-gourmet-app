@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -59,7 +58,7 @@ public class IngredinteView extends ActionBarActivity {
             ingredinte_tipo.setText(ingrediente.getTipo().getDescripcion());
             kcal.setText(Double.toString(ingrediente.getKcal()));
             
-            List<Receta> recetas = RecetaDBA.getRecetasByIngrediente(this.helper, idIngrediente);
+            List<Receta> recetas = RecetaDBA.getRecetasByIngrediente(IngredinteView.this, idIngrediente);
     		this.adapterRecetas = new ResultadosAdapter(IngredinteView.this,  R.layout.list_recetas, recetas);
     		ListView listaRecetas = (ListView) findViewById(R.id.recetasi);
     		listaRecetas.setAdapter(this.adapterRecetas);

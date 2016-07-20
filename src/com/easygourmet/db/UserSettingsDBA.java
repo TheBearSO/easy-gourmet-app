@@ -2,6 +2,8 @@ package com.easygourmet.db;
 
 import java.sql.SQLException;
 
+import android.content.Context;
+
 import com.easygourmet.beans.UserSettings;
 import com.easygourmet.utils.Utils;
 import com.j256.ormlite.dao.Dao;
@@ -14,7 +16,7 @@ public class UserSettingsDBA {
 	 * @param activity La activity en donde se ejecuta
 	 * @param helper El helper de la base de datos
 	 */
-	public static UserSettings setUserSettings(DBHelper helper, boolean isVegetariano, boolean isVegano, boolean isCeliaco){
+	public static UserSettings setUserSettings(Context context, boolean isVegetariano, boolean isVegano, boolean isCeliaco){
 		
 		UserSettings us = new UserSettings();
 		
@@ -24,7 +26,7 @@ public class UserSettingsDBA {
 		
 		try {
 			
-			Dao<UserSettings, String> dao = helper.getDao(UserSettings.class);
+			Dao<UserSettings, String> dao = DBHelper.getHelper(context).getDao(UserSettings.class);
 			
 			UpdateBuilder<UserSettings, String> ub = dao.updateBuilder();
 			
@@ -50,11 +52,11 @@ public class UserSettingsDBA {
 	 * @param helper El helper de la base de datos
 	 * @return Un objeto de tipo {@link com.easygourmet.beans.UserSettings}.
 	*/
-	public static UserSettings getUserSettings(DBHelper helper){
+	public static UserSettings getUserSettings(Context context){
 		UserSettings us = new UserSettings();
 		try {
 			
-			Dao<UserSettings, String> dao = helper.getDao(UserSettings.class);
+			Dao<UserSettings, String> dao = DBHelper.getHelper(context).getDao(UserSettings.class);
 			us = dao.queryForId(String.valueOf(UserSettings.FIELD_VALUE_id));
 			
 		} catch (SQLException e) {

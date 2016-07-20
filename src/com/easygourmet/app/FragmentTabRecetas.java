@@ -14,14 +14,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.easygourmet.beans.Receta;
-import com.easygourmet.db.DBHelper;
 import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.ResultadosAdapter;
 
 public class FragmentTabRecetas extends Fragment {
-	
-	private DBHelper helper;
 	
 	/** Es un adapter que se utiliza en la tab titulada "Recetas" */
 	private ResultadosAdapter adapterRecetas;
@@ -31,8 +28,6 @@ public class FragmentTabRecetas extends Fragment {
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View v = inflater.inflate(R.layout.fragment_tab_recetas, container, false);
-		
-		this.helper = new DBHelper(v.getContext());
 		
 		initRecetas(v);
 		
@@ -44,7 +39,7 @@ public class FragmentTabRecetas extends Fragment {
 	 */
 	private void initRecetas(View v){
 		
-		List<Receta> recetas = RecetaDBA.getAllWhere(this.helper);
+		List<Receta> recetas = RecetaDBA.getAllWhere(v.getContext());
 		this.adapterRecetas = new ResultadosAdapter(v.getContext(),  R.layout.list_recetas,recetas);
 		ListView listaRecetas = (ListView) v.findViewById(R.id.recetas);
 		listaRecetas.setAdapter(this.adapterRecetas);

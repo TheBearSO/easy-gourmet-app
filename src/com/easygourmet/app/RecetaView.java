@@ -2,19 +2,16 @@ package com.easygourmet.app;
 
 import java.util.ArrayList;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.easygourmet.beans.Ingrediente;
 import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaDetalle;
 import com.easygourmet.db.DBHelper;
@@ -44,7 +41,7 @@ public class RecetaView extends ActionBarActivity {
 		if(!recetaDelDia){
 			receta = RecetaDBA.getRecetaById(idReceta, this.helper);
 		}else {
-			receta = RecetaDBA.getRecetaDelDia(this.helper);
+			receta = RecetaDBA.getRecetaDelDia(RecetaView.this);
 		}
 		
 		setRecetaToView(receta);

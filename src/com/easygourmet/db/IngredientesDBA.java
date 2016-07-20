@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
+
 import com.easygourmet.beans.Ingrediente;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -18,11 +20,11 @@ public class IngredientesDBA {
 	 * @param orderByAsc Si es true, el orden es ascendente, si es false, el orden es descendente. 
 	 * @return Una lista de ingredientes. La lista puede ser vacía en caso de que no haya registros.
 	 */
-	public static List<Ingrediente> getAllIntredientes(DBHelper helper, String orderByColumnName, boolean orderByAsc){
+	public static List<Ingrediente> getAllIntredientes(Context context, String orderByColumnName, boolean orderByAsc){
 		
 		List<Ingrediente> ingredientes = new ArrayList<>();
 		try {
-			Dao<Ingrediente, Integer> ingredienteDao = helper.getDao(Ingrediente.class);
+			Dao<Ingrediente, Integer> ingredienteDao = DBHelper.getHelper(context).getDao(Ingrediente.class);
 			QueryBuilder<Ingrediente, Integer> ingredientesQB = ingredienteDao.queryBuilder().orderBy(orderByColumnName, orderByAsc); 
 			ingredientes = ingredientesQB.query();
 		} catch (SQLException e) {
@@ -40,11 +42,12 @@ public class IngredientesDBA {
 	 * @param orderByAsc Si es true, el orden es ascendente, si es false, el orden es descendente. 
 	 * @return Una lista de ingredientes. La lista puede ser vacía en caso de que no haya registros.
 	*/
-	public static List<Ingrediente> getAllIntredientesWhere(DBHelper helper, String orderByColumnName, boolean orderByAsc, boolean isVegetariano, boolean isVegano, boolean isCeliaco){
+	//TODO: Hacer con SQL puro
+	public static List<Ingrediente> getAllIntredientesWhere(Context context, String orderByColumnName, boolean orderByAsc, boolean isVegetariano, boolean isVegano, boolean isCeliaco){
 		
 		List<Ingrediente> ingredientes = new ArrayList<>();
 		try {
-			Dao<Ingrediente, Integer> ingredienteDao = helper.getDao(Ingrediente.class);
+			Dao<Ingrediente, Integer> ingredienteDao = DBHelper.getHelper(context).getDao(Ingrediente.class);
 			QueryBuilder<Ingrediente, Integer> qb = ingredienteDao.queryBuilder();
 			
 			System.out.println("VEGETARIANO: " + isVegetariano + " - VEGANO: " + isVegano + " - CELIACO: " + isCeliaco);

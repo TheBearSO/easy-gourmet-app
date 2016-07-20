@@ -27,15 +27,12 @@ import android.widget.TextView;
 
 import com.easygourmet.beans.Ingrediente;
 import com.easygourmet.beans.UserSettings;
-import com.easygourmet.db.DBHelper;
 import com.easygourmet.db.IngredientesDBA;
 import com.easygourmet.db.UserSettingsDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.utils.Utils;
 
 public class FragmentTabNevera extends Fragment {
-	
-	private DBHelper helper;
 	
 	/** Es un adapter de {@link com.easygourmet.beans.Ingrediente}.
 	 *  Se utiliza en la tab titulada "Que hay en la nevera?", es el adapter del autocomplete */
@@ -68,8 +65,6 @@ public class FragmentTabNevera extends Fragment {
 		
 		View v = inflater.inflate(R.layout.fragment_tab_nevera, container, false);
 		
-		this.helper = new DBHelper(getActivity());
-		
 		//Setea la letra customizada del titulo de la app
 		TextView textView = (TextView) v.findViewById(R.id.tabNevera_titulo);
 		Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Pacifico.ttf");
@@ -80,12 +75,12 @@ public class FragmentTabNevera extends Fragment {
         this.soyVegetariano = ((CheckBox) v.findViewById(R.id.checkBoxVegetariano));
     	this.soyVegano = ((CheckBox) v.findViewById(R.id.checkBoxVegano));
     	this.soyCeliaco = ((CheckBox) v.findViewById(R.id.checkBoxCeliaco));
-    	UserSettings us = UserSettingsDBA.getUserSettings(this.helper);
+    	UserSettings us = UserSettingsDBA.getUserSettings(v.getContext());
         initCheckboxes(us, v);
         
         //AUTOCMPLETE
   		this.ingredientesNevera = IngredientesDBA.getAllIntredientesWhere(
-  			this.helper, Ingrediente.FIELD_NAME_nombre, true, us.isCheckBoxVegetariano(), us.isCheckBoxVegano(), us.isCheckBoxCeliaco()
+  			v.getContext(), Ingrediente.FIELD_NAME_nombre, true, us.isCheckBoxVegetariano(), us.isCheckBoxVegano(), us.isCheckBoxCeliaco()
   		);
 		
 		this.adapterIngredientesNevera = new ArrayAdapter<Ingrediente>(v.getContext(),  R.layout.list_ingredientes, R.id.nombre_ingrediente, this.ingredientesNevera);
@@ -220,7 +215,7 @@ public class FragmentTabNevera extends Fragment {
 		});
 	}
 	
-	private void checkboxClick(Context context, final boolean soyVegetariano, final boolean soyVegano, final boolean soyCeliaco){
+	private void checkboxClick(final Context context, final boolean soyVegetariano, final boolean soyVegano, final boolean soyCeliaco){
 		
 		//Remuevo los ingredientes de la lista de los elegidos por el usuario segun corresponda
 		if(ingredientesElegidos.size() > 0){
@@ -246,16 +241,16 @@ public class FragmentTabNevera extends Fragment {
 		}
 		
 		
-		final DBHelper h = this.helper;
+		//final DBHelper h = DBHelper.getHelper(context);
 		
 		new AsyncTask<Void, Void, Void>() {
 
 			@Override
 			protected Void doInBackground(Void... params) {
-				UserSettingsDBA.setUserSettings (h, soyVegetariano, soyVegano, soyCeliaco);
+				UserSettingsDBA.setUserSettings (context, soyVegetariano, soyVegano, soyCeliaco);
 				
 				adapterIngredientesNevera.clear();
-				ingredientesNevera = IngredientesDBA.getAllIntredientesWhere(h, Ingrediente.FIELD_NAME_nombre, true, soyVegetariano, soyVegano, soyCeliaco);
+				ingredientesNevera = IngredientesDBA.getAllIntredientesWhere(context, Ingrediente.FIELD_NAME_nombre, true, soyVegetariano, soyVegano, soyCeliaco);
 				adapterIngredientesNevera.addAll(ingredientesNevera);
 			    adapterIngredientesNevera.notifyDataSetChanged();
 			    

@@ -19,14 +19,12 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.easygourmet.beans.Receta;
-import com.easygourmet.db.DBHelper;
 import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.ResultadosAdapter;
 
 public class Resultados extends ActionBarActivity {
 
-	private DBHelper helper;
 	private ResultadosAdapter adapterRecetas;
 	private ArrayAdapter<String> adapterResultadosSpinner;
 	private List<Receta> recetas;
@@ -37,8 +35,6 @@ public class Resultados extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_resultados);
 		
-		this.helper = new DBHelper(Resultados.this);
-		
 		Intent intenet = getIntent();
 		
 		Bundle b = intenet.getExtras();
@@ -46,15 +42,15 @@ public class Resultados extends ActionBarActivity {
 		ArrayList<Integer> ingredintesElegidos = intenet.getIntegerArrayListExtra("ingredientesElegidos");
 		
 		if(ingredintesElegidos != null){
-			this.recetas = RecetaDBA.getRecetasByIngredientes(helper, ingredintesElegidos);
+			this.recetas = RecetaDBA.getRecetasByIngredientes(Resultados.this, ingredintesElegidos);
 			if(this.recetas.size() < 1){
-				this.recetas = RecetaDBA.getRecetasByIngredientesAnyMatch(helper, ingredintesElegidos);
+				this.recetas = RecetaDBA.getRecetasByIngredientesAnyMatch(Resultados.this, ingredintesElegidos);
 			}
 			
 			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas, recetas);
 			
 		} else if(idCategoria != null){
-			this.recetas = RecetaDBA.getRecetasByCategoria(helper, idCategoria);
+			this.recetas = RecetaDBA.getRecetasByCategoria(Resultados.this, idCategoria);
 			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas, recetas);
 		}
 		
