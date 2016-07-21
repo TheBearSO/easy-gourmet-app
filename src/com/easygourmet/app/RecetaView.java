@@ -2,13 +2,17 @@ package com.easygourmet.app;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -97,12 +101,23 @@ public class RecetaView extends ActionBarActivity {
 		//lista de ingredinetes de la receta vista
 		adapterRecetaDetalles = new RecetaDetalleAdapter(this, R.layout.list_recetas_detalles, new ArrayList<RecetaDetalle>(r.getDetalles()));
 		
-		LinearLayout layoutDetalles = (LinearLayout) findViewById(R.id.listViewDetalles);
+		ListView layoutDetalles = (ListView) findViewById(R.id.listViewDetalles);
+		layoutDetalles.setAdapter(adapterRecetaDetalles);
+		Utils.setListViewHeightBasedOnChildren(layoutDetalles);
 		
-		for (int i = 0; i < adapterRecetaDetalles.getCount(); i++) {
-		     View view  = adapterRecetaDetalles.getView(i, null, null); 
-		     layoutDetalles.addView(view);
-		}
+		layoutDetalles.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				RecetaDetalle r = adapterRecetaDetalles.getItem(position);
+				
+				Intent i = new Intent(RecetaView.this, IngredinteView.class);
+				i.putExtra("idIngrediente", r.getIngrediente().getIdIngrediente());
+				RecetaView.this.startActivity(i);
+				
+			}
+		});
+		
 	}
 	
 }

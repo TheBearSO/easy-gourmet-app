@@ -57,7 +57,7 @@
     </style>
     
     <style name="textSize_h3">
-         <item name="android:textSize">14sp</item>
+         <item name="android:textSize">16sp</item>
     </style>
     
     <style name="textSize_h4">

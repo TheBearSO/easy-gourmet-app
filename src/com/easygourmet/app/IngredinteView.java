@@ -51,12 +51,20 @@ public class IngredinteView extends ActionBarActivity {
 			ingrediente = ingredintesDao.queryForId(idIngrediente);
 			
 			TextView titulo = (TextView) findViewById(R.id.ingredinte_titulo);
+			
 			TextView ingredinte_tipo = (TextView) findViewById(R.id.ingediente_tipo);
 			TextView kcal = (TextView) findViewById(R.id.kcal);
+			TextView salud = (TextView) findViewById(R.id.salud);
             
             titulo.setText(ingrediente.getNombre());
+            
             ingredinte_tipo.setText(ingrediente.getTipo().getDescripcion());
             kcal.setText(Double.toString(ingrediente.getKcal()));
+            //TODO: implementar salud en la base de datos
+            salud.setText("75%");
+            
+            TextView tituloRecetaCon = (TextView) findViewById(R.id.recetas_con);
+            tituloRecetaCon.setText("Recetas con " + ingrediente.getNombre());
             
             List<Receta> recetas = RecetaDBA.getRecetasByIngrediente(IngredinteView.this, idIngrediente);
     		this.adapterRecetas = new ResultadosAdapter(IngredinteView.this,  R.layout.list_recetas, recetas);
