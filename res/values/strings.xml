@@ -17,6 +17,7 @@
     <string name="ingredientes_cantidad">Cantidad: </string>
     <string name="ingredientes_kcal_label">Kcal: </string>
     <string name="ingredientes_salud_label">Salud: </string>
+    <string name="recetas_vista_porciones_label">¿Cuantos Comen?</string>
     <string name="recetas_vista_ingredinetes_label">Lista de Ingredientes</string>
     <string name="recetas_vista_preparacion_label">Preparación</string>
     <string name="list_recetas_detalles_guion">-</string>

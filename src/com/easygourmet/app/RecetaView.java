@@ -1,6 +1,7 @@
 package com.easygourmet.app;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -29,6 +30,14 @@ public class RecetaView extends ActionBarActivity {
 	private DBHelper helper;
 	
 	private RecetaDetalleAdapter adapterRecetaDetalles;
+	
+	private List<RecetaDetalle> detalles;
+	
+	private ListView listViewDetalles;
+	
+	private int procionesIniciales;
+	
+	private int porciones;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -93,19 +102,23 @@ public class RecetaView extends ActionBarActivity {
 		//receta_pais.setText(r.getPais().getNombre());
 		receta_tiempo.setText(r.getTiempo());
 		receta_dificultad.setText(r.getDificultad());
-		receta_porciones.setText(Integer.toString(r.getPorciones()));
+		
+		porciones = procionesIniciales = r.getPorciones();
+		receta_porciones.setText(Integer.toString(porciones));
+		
 		receta_salud.setText(Integer.toString(r.getSalud()) + "% Sano");
 		
 		receta_preparacion.setText(r.getPreparacion());
 		
 		//lista de ingredinetes de la receta vista
-		adapterRecetaDetalles = new RecetaDetalleAdapter(this, R.layout.list_recetas_detalles, new ArrayList<RecetaDetalle>(r.getDetalles()));
+		this.detalles = new ArrayList<>(r.getDetalles());
+		adapterRecetaDetalles = new RecetaDetalleAdapter(this, R.layout.list_recetas_detalles, new ArrayList<>(r.getDetalles()));
 		
-		ListView layoutDetalles = (ListView) findViewById(R.id.listViewDetalles);
-		layoutDetalles.setAdapter(adapterRecetaDetalles);
-		Utils.setListViewHeightBasedOnChildren(layoutDetalles);
+		listViewDetalles = (ListView) findViewById(R.id.listViewDetalles);
+		listViewDetalles.setAdapter(adapterRecetaDetalles);
+		Utils.setListViewHeightBasedOnChildren(listViewDetalles);
 		
-		layoutDetalles.setOnItemClickListener(new OnItemClickListener() {
+		listViewDetalles.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,6 +131,52 @@ public class RecetaView extends ActionBarActivity {
 			}
 		});
 		
+		Button plus = (Button) findViewById(R.id.recetas_vista_button_porciones_plus);
+		plus.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(porciones == 20) {
+					return;
+				}
+				TextView receta_porciones = (TextView) findViewById(R.id.receta_porciones);
+				porciones++;
+				receta_porciones.setText(Integer.toString(porciones));
+				calcuadorProciones();
+			}
+		});
+		
+		Button minus = (Button) findViewById(R.id.recetas_vista_button_porciones_minus);
+		minus.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(porciones == 1) {
+					return;
+				}
+				TextView receta_porciones = (TextView) findViewById(R.id.receta_porciones);
+				porciones--;
+				calcuadorProciones();
+				receta_porciones.setText(Integer.toString(porciones));
+			}
+		});
+		
+	}
+	
+	private void calcuadorProciones(){
+		//TODO: Refactorizar esto
+		List<RecetaDetalle> list = new ArrayList<>(this.detalles.size());
+		for(RecetaDetalle r: this.detalles) list.add(new RecetaDetalle(r));
+		
+		float cantidad;
+		for(RecetaDetalle rd : list){
+			cantidad = ( (porciones * rd.getCantidad()) / procionesIniciales);
+			cantidad = (float) Math.ceil(cantidad);
+			rd.setCantidad(cantidad);
+		}
+		
+		adapterRecetaDetalles = new RecetaDetalleAdapter(this, R.layout.list_recetas_detalles, list);
+		listViewDetalles.setAdapter(adapterRecetaDetalles);
 	}
 	
 }

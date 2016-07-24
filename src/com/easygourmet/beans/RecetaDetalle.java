@@ -42,6 +42,27 @@ public class RecetaDetalle {
 	 * Constructor vacío.
 	 */
 	public RecetaDetalle() {}
+	
+	
+
+	/**
+	 * @param idDetalle
+	 * @param receta
+	 * @param cantidad
+	 * @param unidadMedida
+	 * @param esIndispensable
+	 * @param ingrediente
+	 */
+	public RecetaDetalle(RecetaDetalle r) {
+		this.idDetalle = r.getIdDetalle();
+		this.receta = r.getReceta();
+		this.cantidad = r.getCantidad();
+		this.unidadMedida = r.getUnidadMedida();
+		this.esIndispensable = r.isEsIndispensable();
+		this.ingrediente = r.getIngrediente();
+	}
+
+
 
 	public int getIdDetalle() {
 		return idDetalle;
