@@ -171,7 +171,10 @@ public class RecetaView extends ActionBarActivity {
 		float cantidad;
 		for(RecetaDetalle rd : list){
 			cantidad = ( (porciones * rd.getCantidad()) / procionesIniciales);
-			cantidad = (float) Math.ceil(cantidad);
+			cantidad = Math.round(cantidad);
+			if(cantidad == 0){
+				cantidad = 1;
+			}
 			rd.setCantidad(cantidad);
 		}
 		
