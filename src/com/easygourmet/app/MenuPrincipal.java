@@ -49,6 +49,9 @@ public class MenuPrincipal extends FragmentActivity {
 		
 		setContentView(R.layout.activity_menu_principal);
 		
+
+		overridePendingTransition(R.drawable.slide_in, R.drawable.slide_out);
+		
 		//Seteo la ultima tab activa despues de la rotación
 		if(savedInstanceState != null){
 			Integer currentTab = savedInstanceState.getInt("currentTab");

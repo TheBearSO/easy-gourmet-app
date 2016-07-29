@@ -44,6 +44,9 @@ public class RecetaView extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_recetas_vista);
 		
+
+		overridePendingTransition(R.drawable.slide_in, R.drawable.slide_out);
+		
 		Bundle b = getIntent().getExtras();
 		int idReceta = b.getInt("idReceta");
 		boolean recetaDelDia = b.getBoolean("recetaDelDia");
@@ -58,6 +61,7 @@ public class RecetaView extends ActionBarActivity {
 		}
 		
 		setRecetaToView(receta);
+		
 	}
 
 	@Override
@@ -85,7 +89,7 @@ public class RecetaView extends ActionBarActivity {
 		System.out.println(r);
 		
 		final ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
-		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 300, 200, receta_image);
+		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 300, 200, receta_image, R.drawable.ic_launcher);
 	
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		

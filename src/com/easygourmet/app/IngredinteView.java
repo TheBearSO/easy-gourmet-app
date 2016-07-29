@@ -32,6 +32,9 @@ public class IngredinteView extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ingredientes_vista);
 		
+
+		overridePendingTransition(R.drawable.slide_in, R.drawable.slide_out);
+		
 		this.helper = new DBHelper(IngredinteView.this);
 		
 		//Obtengo parametro pasado como argumento a la activity
