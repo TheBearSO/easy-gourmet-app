@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/resultados_image"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:contentDescription="@null"
-            android:src="@drawable/wok" />
+            android:src="@drawable/async_loader_list_recetas" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,22 +25,25 @@
             android:orientation="vertical"
             android:paddingLeft="5dp" >
 
-			    <TextView android:id="@+id/nombre"
+			    <TextView
+			        android:id="@+id/nombre"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
-			        android:textStyle="bold"
-			        android:textColor="#333" 
+			        android:minHeight="25dp"
 			        android:text="Pollo al Disco"
-			        android:textSize="17sp"/>
+			        android:textColor="#333"
+			        android:textSize="17sp"
+			        android:textStyle="bold" />
 			    
-			    <TextView android:id="@+id/descripcion"
+			    <TextView
+			        android:id="@+id/descripcion"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
-			        android:minHeight="60dp"
+			        android:minHeight="55dp"
 			        android:paddingBottom="3dp"
 			        android:paddingRight="5dp"
-			        android:textColor="#666" 
 			        android:text="Excelente Pollo al Disco con papas españolas y crudo"
+			        android:textColor="#666"
 			        android:textSize="15sp" />
 			    
 			    <LinearLayout

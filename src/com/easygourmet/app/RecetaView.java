@@ -19,15 +19,12 @@ import android.widget.TextView;
 
 import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaDetalle;
-import com.easygourmet.db.DBHelper;
 import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.RecetaDetalleAdapter;
 import com.easygourmet.utils.Utils;
 
 public class RecetaView extends ActionBarActivity {
-
-	private DBHelper helper;
 	
 	private RecetaDetalleAdapter adapterRecetaDetalles;
 	
@@ -51,11 +48,9 @@ public class RecetaView extends ActionBarActivity {
 		int idReceta = b.getInt("idReceta");
 		boolean recetaDelDia = b.getBoolean("recetaDelDia");
 		
-		this.helper = new DBHelper(RecetaView.this);
-		
 		Receta receta;
 		if(!recetaDelDia){
-			receta = RecetaDBA.getRecetaById(idReceta, this.helper);
+			receta = RecetaDBA.getRecetaById(idReceta, RecetaView.this);
 		}else {
 			receta = RecetaDBA.getRecetaDelDia(RecetaView.this);
 		}
@@ -86,10 +81,8 @@ public class RecetaView extends ActionBarActivity {
 	private void setRecetaToView(Receta r){
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollView_activity_recetas_vista);
 		
-		System.out.println(r);
-		
 		final ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
-		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 300, 200, receta_image, R.drawable.ic_launcher);
+		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 400, 300, receta_image, R.drawable.async_loader_recetas_view);
 	
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		

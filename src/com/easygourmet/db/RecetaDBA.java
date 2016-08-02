@@ -27,11 +27,11 @@ public class RecetaDBA {
 	 * @return Un Objeto {@link com.easygourmet.beans.Receta} si existe el id en la base de datos, 
 	 * 		   o <code>null</code> en caso contrario.  
 	 */
-	public static Receta getRecetaById(int idReceta, DBHelper helper){
+	public static Receta getRecetaById(int idReceta, Context context){
 		
 		Receta r = null;
 		try {
-			Dao<Receta, Integer> recetaDao = helper.getDao(Receta.class);
+			Dao<Receta, Integer> recetaDao = DBHelper.getHelper(context).getDao(Receta.class);
 			r = recetaDao.queryForId(idReceta);
 			
 		} catch (SQLException e) {

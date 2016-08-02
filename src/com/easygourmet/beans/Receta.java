@@ -44,7 +44,7 @@ public class Receta {
 	/**
 	 * Es la descripcion general de la receta. Se utiliza en la activity 'Resultados'.
 	*/
-	@DatabaseField(canBeNull = false, width = 200)
+	@DatabaseField(canBeNull = false, width = 65)
 	private String descripcion;
 	
 	/**

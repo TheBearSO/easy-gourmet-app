@@ -21,9 +21,13 @@ public class DBHelper extends SQLiteAssetHelper {
     
     protected AndroidConnectionSource mConnectionSource = new AndroidConnectionSource(this);
 
+    public DBHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+    
     public static synchronized DBHelper getHelper(Context context){
     	if(helper == null){
-    		helper = new DBHelper(context);
+    		helper = new DBHelper(context.getApplicationContext());
     	}
     	return helper;
     }
@@ -34,10 +38,6 @@ public class DBHelper extends SQLiteAssetHelper {
     
     public static synchronized SQLiteDatabase getWriteDB(Context context){
     	return getHelper(context).getWritableDatabase();
-    }
-    
-    public DBHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override

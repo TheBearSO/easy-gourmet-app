@@ -24,13 +24,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="5dp" >
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"  >
 
         <LinearLayout
             android:id="@+id/layout_categoria"
@@ -167,8 +167,8 @@
                     android:textColor="@color/black_medium" />
             </LinearLayout>
         </LinearLayout>
+        
         <!-- Lista de Recetas con este ingredientes -->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

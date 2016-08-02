@@ -10,13 +10,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TabHost;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 import com.easygourmet.main.R;
-import com.easygourmet.ui.MyPageAdapter;
+import com.easygourmet.ui.MenuPrincipalPageTabAdapter;
 import com.easygourmet.utils.Utils;
 
 
@@ -30,7 +31,7 @@ public class MenuPrincipal extends FragmentActivity {
 	private TabHost tabHost;
 	private ViewPager pager; 
 
-	private MyPageAdapter mPagerAdapter;
+	private MenuPrincipalPageTabAdapter mPagerAdapter;
 	
 	private HashMap<String, TabInfo> mapTabInfo = new HashMap<>();
     private TabInfo mCurrentTab = null;
@@ -130,7 +131,7 @@ public class MenuPrincipal extends FragmentActivity {
 			}
 		});   
         
-        this.mPagerAdapter  = new MyPageAdapter(super.getSupportFragmentManager());
+        this.mPagerAdapter  = new MenuPrincipalPageTabAdapter(super.getSupportFragmentManager());
         this.pager = (ViewPager)super.findViewById(R.id.pager);
         this.pager.setOffscreenPageLimit(3);
         this.pager.setAdapter(this.mPagerAdapter);
@@ -139,6 +140,9 @@ public class MenuPrincipal extends FragmentActivity {
         	
             @Override
             public void onPageSelected(int position) {
+            	InputMethodManager im = (InputMethodManager) MenuPrincipal.this.getSystemService(Context.INPUT_METHOD_SERVICE);             
+            	im.hideSoftInputFromWindow(tabHost.getApplicationWindowToken(), 0);
+            	
                 tabHost.setCurrentTab(position);
             }
             

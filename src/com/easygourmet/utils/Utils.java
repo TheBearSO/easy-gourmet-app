@@ -14,8 +14,6 @@ import android.widget.TabWidget;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -71,37 +69,14 @@ public class Utils {
 		return url;
 	}
 	
-	public static void loadImage(final Context context, String fileName, int width, int height, final ImageView img){
+	public static void loadImage(final Context context, String fileName, int width, int height, final ImageView img, final int asyncLoader){
 		
 		final String url = getColudinaryURL(fileName, width, height);
 		
 		Picasso.with(context)
 		.load(url)
-		.networkPolicy(NetworkPolicy.OFFLINE)
-		.into(img, new Callback() {
-		    @Override
-		    public void onSuccess() {
-
-		    }
-
-		    @Override
-		    public void onError() {
-		        //Try again online if cache failed
-		        Picasso.with(context)
-		                .load(url)
-		                .into(img, new Callback() {
-		            @Override
-		            public void onSuccess() {
-
-		            }
-
-		            @Override
-		            public void onError() {
-		                
-		            }
-		        });
-		    }
-		});
+		.placeholder(asyncLoader)
+		.into(img);
 	}
 	
 	/**

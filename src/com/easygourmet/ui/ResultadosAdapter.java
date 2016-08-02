@@ -85,7 +85,7 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
 	        //textViewSalud = (TextView) view.findViewById(R.id.salud);;
 	        list_recetas.salud = textViewSalud;
 	        
-	        Utils.loadImage(getContext(), String.valueOf(r.getIdReceta()), 160, 160, list_recetas.resultados_image);
+	        Utils.loadImage(getContext(), String.valueOf(r.getIdReceta()), 160, 160, list_recetas.resultados_image, R.drawable.async_loader_list_recetas);
 	        
 	        list_recetas.nombre.setText(r.getNombre());
 	        list_recetas.descripcion.setText(r.getDescripcion());
