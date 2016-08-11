@@ -21,8 +21,6 @@ import com.easygourmet.ui.ResultadosAdapter;
 import com.j256.ormlite.dao.Dao;
 
 public class IngredinteView extends ActionBarActivity {
-
-	private DBHelper helper;
 	
 	private ResultadosAdapter adapterRecetas;
 	
@@ -34,8 +32,6 @@ public class IngredinteView extends ActionBarActivity {
 		
 
 		overridePendingTransition(R.drawable.slide_in, R.drawable.slide_out);
-		
-		this.helper = new DBHelper(IngredinteView.this);
 		
 		//Obtengo parametro pasado como argumento a la activity
 		Bundle b = getIntent().getExtras();
@@ -50,7 +46,7 @@ public class IngredinteView extends ActionBarActivity {
 		Ingrediente ingrediente = null;
 		
 		try {
-			Dao<Ingrediente, Integer> ingredintesDao = helper.getDao(Ingrediente.class);
+			Dao<Ingrediente, Integer> ingredintesDao = DBHelper.getHelper(IngredinteView.this).getDao(Ingrediente.class);
 			ingrediente = ingredintesDao.queryForId(idIngrediente);
 			
 			TextView titulo = (TextView) findViewById(R.id.ingredinte_titulo);

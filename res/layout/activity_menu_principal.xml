@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.easygourmet.activity.MenuPrincipal">
-     
-     <requestFocus />
+    tools:context="com.easygourmet.activity.MenuPrincipal"
+    android:focusableInTouchMode="true">
      
      <TabHost
         android:id="@android:id/tabhost"

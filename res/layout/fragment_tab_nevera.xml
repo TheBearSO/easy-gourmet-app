@@ -8,62 +8,134 @@
         android:id="@+id/tabNevera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingBottom="10dp" >
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tabNevera_titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/icon_principal"
+                    android:drawablePadding="6dp"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/textSize_h0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu_principal_layout_checkboxes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxVegetariano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="true"
+                    android:text="@string/menu_principal_vegetariano" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxVegano"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="true"
+                    android:text="@string/menu_principal_vegano" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCeliaco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="true"
+                    android:text="@string/menu_principal_celiaco" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteIngredientesNevera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:completionThreshold="1"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="@string/menu_principal_queHayEnLaNevera" />
+            </LinearLayout>
             
-            <TextView
-                android:id="@+id/tabNevera_titulo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/app_name"
-                android:textAppearance="@style/textSize_h0"
-                android:drawableLeft="@drawable/icon_principal" 
-                android:drawablePadding="6dp" />
+            <com.easygourmet.ui.RowLayout
+                android:id="@+id/layoutIngredientesElegidosNevera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal" >
+
+                <!-- <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="3dp"
+                    android:drawableRight="@drawable/cross"
+                    android:background="#ddd"
+                    android:text="Zanahoria"
+                    android:textSize="15sp"
+                    android:padding="5dp" /> -->
+
+                
+            </com.easygourmet.ui.RowLayout>
+
+            <!-- <ListView
+                android:id="@+id/listViewNevera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp" >
+            </ListView> -->
+
+            <!--
+                 <Button
+                android:id="@+id/buttonNevera"
+                style="@style/button_search_easyGourmet"
+                android:text="@string/buttonNevera" />
+            -->
         </LinearLayout>
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteIngredientesNevera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="22dp"
-            android:layout_marginRight="22dp"
-            android:completionThreshold="1"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="@string/menu_principal_queHayEnLaNevera" />
-
-        <ListView
-            android:id="@+id/listViewNevera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp" >
-        </ListView>
-
-        <Button
-            android:id="@+id/buttonNevera"
-            style="@style/button_search_easyGourmet"
-            android:text="@string/buttonNevera" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="40dp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal" >
 
-            <TextView
+            <!--
+                 <TextView
                 android:id="@+id/buttonRecetaDelDia"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -72,43 +144,15 @@
                 android:drawableTop="@drawable/receta_del_dia"
                 android:gravity="center"
                 android:text="@string/menu_principal_receta_del_dia"
-                android:textSize="17sp"
-                android:textColor="#111" />
+                android:textColor="#111"
+                android:textSize="17sp" />
+            -->
 
-            <LinearLayout
-                android:id="@+id/menu_principal_layout_checkboxes"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:orientation="vertical" >
-
-                <CheckBox
-                    android:id="@+id/checkBoxVegetariano"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                    android:checked="true"
-                    android:text="@string/menu_principal_vegetariano" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxVegano"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                    android:checked="true"
-                    android:text="@string/menu_principal_vegano" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxCeliaco"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                    android:checked="true"
-                    android:text="@string/menu_principal_celiaco" />
-            </LinearLayout>
+            <ListView
+                android:id="@+id/listViewRecetasResultadosNevera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
         </LinearLayout>
     </LinearLayout>
 
