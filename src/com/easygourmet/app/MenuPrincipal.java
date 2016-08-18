@@ -5,9 +5,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -25,7 +25,7 @@ import com.easygourmet.utils.Utils;
  * La clase MenuPrincipal la cual extiende de un activity,
  *  la misma contiene 3 tabs y es la pantalla principal de la aplicacion.
  */
-public class MenuPrincipal extends ActionBarActivity {
+public class MenuPrincipal extends FragmentActivity {
 
 	/** Es el elemento que contiene a todas las tabs del menu principal */
 	private TabHost tabHost;

@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +23,7 @@ import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.ResultadosAdapter;
 
-public class Resultados extends ActionBarActivity {
+public class Resultados extends Activity {
 
 	private ResultadosAdapter adapterRecetas;
 	private ArrayAdapter<String> adapterResultadosSpinner;

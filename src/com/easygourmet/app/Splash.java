@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.easygourmet.main.R;
 
-public class Splash extends Activity{
+public class Splash extends Activity {
 	
 	 /** Duration of wait **/
     private final int SPLASH_DISPLAY_LENGTH = 1000;
