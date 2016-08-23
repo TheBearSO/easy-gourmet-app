@@ -98,20 +98,20 @@ public class MenuPrincipal extends FragmentActivity {
         
         TabSpec tabNevera = tabHost.newTabSpec(TAB_NAME_NEVERA);
         tabNevera.setIndicator(
-        	TAB_NAME_NEVERA
-            //getTextViewForTab(TAB_NAME_NEVERA, fontSize, textColor, gravity, tabBackgroungColor)
+        	//TAB_NAME_NEVERA
+            getTextViewForTab(TAB_NAME_NEVERA, fontSize, textColor, gravity, tabBackgroungColor)
         );
 
         TabSpec tabRecetas = tabHost.newTabSpec(TAB_NAME_RECETAS);
         tabRecetas.setIndicator(
-        	TAB_NAME_RECETAS
-            //getTextViewForTab(TAB_NAME_RECETAS, fontSize, textColor, gravity, tabBackgroungColor)
+        	//TAB_NAME_RECETAS
+            getTextViewForTab(TAB_NAME_RECETAS, fontSize, textColor, gravity, tabBackgroungColor)
         );
         
         TabSpec tabIngredientes = tabHost.newTabSpec(TAB_NAME_INGREDIENTES);
         tabIngredientes.setIndicator(
-        	TAB_NAME_INGREDIENTES
-        	//getTextViewForTab(TAB_NAME_INGREDIENTES, fontSize, textColor, gravity, tabBackgroungColor)
+        	//TAB_NAME_INGREDIENTES
+        	getTextViewForTab(TAB_NAME_INGREDIENTES, fontSize, textColor, gravity, tabBackgroungColor)
         );
         
         addTab(this, tabHost, tabNevera, (tabInfo = new TabInfo(TAB_NAME_NEVERA)));
@@ -122,14 +122,14 @@ public class MenuPrincipal extends FragmentActivity {
         this.mapTabInfo.put(tabInfo.tag, tabInfo);
         
         tabHost.setCurrentTab(initialTab);
-		//tabHost.getTabWidget().getChildAt(initialTab).setBackgroundColor(tabBackgroungColorActive);
+		tabHost.getTabWidget().getChildAt(initialTab).setBackgroundColor(tabBackgroungColorActive);
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
 			
 			@Override
 			public void onTabChanged(String tabId) {
 				int pos = tabHost.getCurrentTab();
 		        pager.setCurrentItem(pos);
-		        //Utils.setActiveTab(tabHost, tabBackgroungColor, tabBackgroungColorActive);
+		        Utils.setActiveTab(tabHost, tabBackgroungColor, tabBackgroungColorActive);
 		        
 		        TabInfo newTab = mapTabInfo.get(tabId);
 		        hideShowFragment(newTab);
@@ -241,7 +241,7 @@ public class MenuPrincipal extends FragmentActivity {
         tv.setTextColor(textColor);
         tv.setGravity(gravity);
         tv.setBackgroundColor(backgroundColor);
-        tv.setPadding(0, 10, 0, 10); //OJO PADDING
+        tv.setPadding(0, 12, 0, 12); //OJO PADDING
         
         return tv;
 	}

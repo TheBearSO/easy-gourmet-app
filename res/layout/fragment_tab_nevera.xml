@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-<!--             <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -31,50 +31,15 @@
                     android:drawablePadding="6dp"
                     android:text="@string/app_name"
                     android:textAppearance="@style/textSize_h0" />
-            </LinearLayout> -->
-
-            <LinearLayout
-                android:id="@+id/menu_principal_layout_checkboxes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp"
-                android:paddingTop="16dp" >
-
-                <CheckBox
-                    android:id="@+id/checkBoxVegetariano"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                    android:checked="true"
-                    android:text="@string/menu_principal_vegetariano" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxVegano"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                    android:checked="true"
-                    android:text="@string/menu_principal_vegano" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxCeliaco"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                    android:checked="true"
-                    android:text="@string/menu_principal_celiaco" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp" >
 
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteIngredientesNevera"
@@ -85,19 +50,20 @@
                     android:gravity="center"
                     android:hint="@string/menu_principal_queHayEnLaNevera" />
             </LinearLayout>
-            
+
             <com.easygourmet.ui.RowLayout
                 android:id="@+id/layoutIngredientesElegidosNevera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
                 android:paddingBottom="8dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:paddingTop="8dp"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal" >
+                android:paddingTop="8dp" >
 
-                <!-- <TextView
+                <!--
+                     <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="3dp"
@@ -105,49 +71,79 @@
                     android:background="#ddd"
                     android:text="Zanahoria"
                     android:textSize="15sp"
-                    android:padding="5dp" /> -->
+                    android:padding="5dp" />
+                -->
 
-                
             </com.easygourmet.ui.RowLayout>
 
-            <!-- <ListView
-                android:id="@+id/listViewNevera"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp" >
-            </ListView> -->
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal" >
 
-            <!--
-                 <Button
-                android:id="@+id/buttonNevera"
-                style="@style/button_search_easyGourmet"
-                android:text="@string/buttonNevera" />
-            -->
+                <Button
+                    android:id="@+id/buttonNevera"
+                    style="@style/button_search_easyGourmet"
+                    android:text="@string/buttonNevera" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical" >
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/sinResultados"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/buttonRecetaDelDia"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
                 android:drawablePadding="5dp"
-                android:drawableTop="@drawable/fridge"
+                android:drawableTop="@drawable/receta_del_dia"
                 android:gravity="center"
+                android:text="@string/menu_principal_receta_del_dia"
                 android:textColor="#111"
                 android:textSize="17sp" />
 
-            <ListView
-                android:id="@+id/listViewRecetasResultadosNevera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-            </ListView>
+            <LinearLayout
+                android:id="@+id/menu_principal_layout_checkboxes"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="vertical" >
+
+                <CheckBox
+                    android:id="@+id/checkBoxVegetariano"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="true"
+                    android:text="@string/menu_principal_vegetariano" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxVegano"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="true"
+                    android:text="@string/menu_principal_vegano" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCeliaco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:checked="true"
+                    android:text="@string/menu_principal_celiaco" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

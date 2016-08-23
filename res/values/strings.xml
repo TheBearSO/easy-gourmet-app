@@ -11,9 +11,9 @@
     <string name="menu_principal_queHayEnLaNevera">¿Que Hay en tu Nevera?</string>
     <string name="menu_principal_buscarIngredinetes">Buscar Ingredintes&#8230;</string>
     <string name="menu_principal_receta_del_dia">Ver\nReceta del Día</string>
-    <string name="menu_principal_vegetariano">Vegetariano</string>
-    <string name="menu_principal_vegano">Vegano</string>
-    <string name="menu_principal_celiaco">Celiaco</string>
+    <string name="menu_principal_vegetariano">Soy Vegetariano</string>
+    <string name="menu_principal_vegano">Soy Vegano</string>
+    <string name="menu_principal_celiaco">Soy Celiaco</string>
     <string name="ingredientes_cantidad">Cantidad: </string>
     <string name="ingredientes_kcal_label">Kcal: </string>
     <string name="ingredientes_salud_label">Salud: </string>
