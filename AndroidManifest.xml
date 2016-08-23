@@ -18,7 +18,7 @@
         <activity
             android:name="com.easygourmet.app.Splash"
             android:label="@string/title_activity_resultados"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -29,26 +29,22 @@
         <activity
             android:name="com.easygourmet.app.MenuPrincipal"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light" >
+            android:theme="@style/Theme.AppCompat.Light" >
         </activity>
         <activity
             android:name="com.easygourmet.app.Resultados"
             android:label="@string/title_activity_resultados"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name="com.easygourmet.app.RecetaView"
             android:label="@string/title_activity_recetas_vista"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name="com.easygourmet.app.IngredinteView"
             android:label="@string/title_activity_ingredintes_vista"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar" >
-        </activity>
-        <activity
-            android:name="com.easygourmet.app.MainActivityTab"
-            android:label="@string/title_activity_main_activity_tab" >
+           	android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
     </application>
 

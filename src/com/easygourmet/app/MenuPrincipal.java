@@ -41,6 +41,7 @@ public class MenuPrincipal extends FragmentActivity {
 	final String TAB_NAME_INGREDIENTES = "Ingredientes";
 	
 	
+	
 	/* (non-Javadoc)
 	 * @see android.support.v7.app.ActionBarActivity#onCreate(android.os.Bundle)
 	 */
@@ -49,7 +50,11 @@ public class MenuPrincipal extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_menu_principal);
-		
+//		SpannableString s = new SpannableString("Easy Gourmet");
+//		s.setSpan(new TypefaceSpan(this, "Pacifico.ttf"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//		
+//		ActionBar actionBar = getActionBar();
+//		actionBar.setTitle(s);
 		//overridePendingTransition(R.drawable.slide_in, R.drawable.slide_out);
 		
 		//Seteo la ultima tab activa despues de la rotación
@@ -59,7 +64,6 @@ public class MenuPrincipal extends FragmentActivity {
 		}else{
 			initTabs(0);
 		}
-		
 	}
 	
 	/* (non-Javadoc)
@@ -94,17 +98,20 @@ public class MenuPrincipal extends FragmentActivity {
         
         TabSpec tabNevera = tabHost.newTabSpec(TAB_NAME_NEVERA);
         tabNevera.setIndicator(
-        	getTextViewForTab(TAB_NAME_NEVERA, fontSize, textColor, gravity, tabBackgroungColor)
+        	TAB_NAME_NEVERA
+            //getTextViewForTab(TAB_NAME_NEVERA, fontSize, textColor, gravity, tabBackgroungColor)
         );
 
         TabSpec tabRecetas = tabHost.newTabSpec(TAB_NAME_RECETAS);
         tabRecetas.setIndicator(
-        	getTextViewForTab(TAB_NAME_RECETAS, fontSize, textColor, gravity, tabBackgroungColor)
+        	TAB_NAME_RECETAS
+            //getTextViewForTab(TAB_NAME_RECETAS, fontSize, textColor, gravity, tabBackgroungColor)
         );
         
         TabSpec tabIngredientes = tabHost.newTabSpec(TAB_NAME_INGREDIENTES);
         tabIngredientes.setIndicator(
-        	getTextViewForTab(TAB_NAME_INGREDIENTES, fontSize, textColor, gravity, tabBackgroungColor)
+        	TAB_NAME_INGREDIENTES
+        	//getTextViewForTab(TAB_NAME_INGREDIENTES, fontSize, textColor, gravity, tabBackgroungColor)
         );
         
         addTab(this, tabHost, tabNevera, (tabInfo = new TabInfo(TAB_NAME_NEVERA)));
@@ -115,14 +122,14 @@ public class MenuPrincipal extends FragmentActivity {
         this.mapTabInfo.put(tabInfo.tag, tabInfo);
         
         tabHost.setCurrentTab(initialTab);
-		tabHost.getTabWidget().getChildAt(initialTab).setBackgroundColor(tabBackgroungColorActive);
+		//tabHost.getTabWidget().getChildAt(initialTab).setBackgroundColor(tabBackgroungColorActive);
         tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
 			
 			@Override
 			public void onTabChanged(String tabId) {
 				int pos = tabHost.getCurrentTab();
 		        pager.setCurrentItem(pos);
-		        Utils.setActiveTab(tabHost, tabBackgroungColor, tabBackgroungColorActive);
+		        //Utils.setActiveTab(tabHost, tabBackgroungColor, tabBackgroungColorActive);
 		        
 		        TabInfo newTab = mapTabInfo.get(tabId);
 		        hideShowFragment(newTab);
@@ -135,6 +142,8 @@ public class MenuPrincipal extends FragmentActivity {
         this.pager.setOffscreenPageLimit(3);
         this.pager.setAdapter(this.mPagerAdapter);
         this.pager.setCurrentItem(initialTab);
+        
+        
         this.pager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
         	
             @Override

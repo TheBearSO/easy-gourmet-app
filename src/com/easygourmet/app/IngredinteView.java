@@ -62,8 +62,8 @@ public class IngredinteView extends Activity {
             //TODO: implementar salud en la base de datos
             salud.setText("75%");
             
-            TextView tituloRecetaCon = (TextView) findViewById(R.id.recetas_con);
-            tituloRecetaCon.setText("Recetas con " + ingrediente.getNombre());
+//            TextView tituloRecetaCon = (TextView) findViewById(R.id.recetas_con);
+//            tituloRecetaCon.setText("Recetas con " + ingrediente.getNombre());
             
             List<Receta> recetas = RecetaDBA.getRecetasByIngrediente(IngredinteView.this, idIngrediente);
     		this.adapterRecetas = new ResultadosAdapter(IngredinteView.this,  R.layout.list_recetas, recetas);

@@ -81,9 +81,9 @@ public class FragmentTabNevera extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_tab_nevera, container, false);
 		
 		//Setea la letra customizada del titulo de la app
-		TextView textView = (TextView) v.findViewById(R.id.tabNevera_titulo);
-		Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Pacifico.ttf");
-		textView.setTypeface(typeFace);
+//		TextView textView = (TextView) v.findViewById(R.id.tabNevera_titulo);
+//		Typeface typeFace = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Pacifico.ttf");
+//		textView.setTypeface(typeFace);
 		
 		//Obtengo los valores de los checkbox's en el layout/activity_menu_principal.xml
        
@@ -133,6 +133,7 @@ public class FragmentTabNevera extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Ingrediente i = FragmentTabNevera.this.adapterAutocompleteIngredientesNevera.getItem(position);
+				FragmentTabNevera.this.autoCompleteIngredientes.setText("");
 				
 				for (TextView tv : ingredientesElegidos) {
 					if(i.getIdIngrediente() == tv.getId()){
@@ -160,13 +161,12 @@ public class FragmentTabNevera extends Fragment {
 
 						
 						listRecetas(getActivity());
-						listViewRecetasResultadosNevera.requestFocus();
+						//listViewRecetasResultadosNevera.requestFocus();
 					}
 				});
 				
-				listViewRecetasResultadosNevera.requestFocus();
+				//listViewRecetasResultadosNevera.requestFocus();
 				listRecetas(getActivity());
-				FragmentTabNevera.this.autoCompleteIngredientes.setText("");
 			}
 		});
         
@@ -223,6 +223,13 @@ public class FragmentTabNevera extends Fragment {
 		List<Receta> recetas = RecetaDBA.getRecetasByIngredientes(context, idsIngredientesElegidos);
 		if(recetas.size() < 1){
 			recetas = RecetaDBA.getRecetasByIngredientesAnyMatch(context, idsIngredientesElegidos);
+		}
+		
+		TextView tv = (TextView) getActivity().findViewById(R.id.sinResultados);
+		if(recetas.size() > 0){
+			tv.setVisibility(View.GONE);
+		}else{
+			tv.setVisibility(View.VISIBLE);
 		}
 		
 		this.adapterRecetas = new ResultadosAdapter(getActivity(), R.layout.list_recetas, recetas);

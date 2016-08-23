@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <LinearLayout
+<!--             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
@@ -31,7 +31,7 @@
                     android:drawablePadding="6dp"
                     android:text="@string/app_name"
                     android:textAppearance="@style/textSize_h0" />
-            </LinearLayout>
+            </LinearLayout> -->
 
             <LinearLayout
                 android:id="@+id/menu_principal_layout_checkboxes"
@@ -39,8 +39,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingBottom="8dp"
-                android:paddingTop="8dp" >
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp" >
 
                 <CheckBox
                     android:id="@+id/checkBoxVegetariano"
@@ -71,7 +71,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="8dp"
-                android:paddingTop="8dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
                 android:gravity="center"
@@ -132,21 +131,17 @@
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal" >
+            android:orientation="vertical" >
 
-            <!--
-                 <TextView
-                android:id="@+id/buttonRecetaDelDia"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
+            <TextView
+                android:id="@+id/sinResultados"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
-                android:drawableTop="@drawable/receta_del_dia"
+                android:drawableTop="@drawable/fridge"
                 android:gravity="center"
-                android:text="@string/menu_principal_receta_del_dia"
                 android:textColor="#111"
                 android:textSize="17sp" />
-            -->
 
             <ListView
                 android:id="@+id/listViewRecetasResultadosNevera"
