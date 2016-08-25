@@ -21,13 +21,10 @@
     <string name="recetas_vista_ingredinetes_label">Lista de Ingredientes</string>
     <string name="recetas_vista_preparacion_label">Preparación</string>
     <string name="list_recetas_detalles_guion">-</string>
-    <string name="resultados_spinner_label">Ordenar Por: </string>
-
-    <string-array name="resultados_spinner_array">
-        <item>Mas Sanos</item>
-        <item>Menor Tiempo</item>
-        <item>Dificultad</item>
-        <item>Alfabéticamente</item>
-    </string-array>
+    
+    <string name="resultados_menu_massanos">Mas Sanos</string>
+    <string name="resultados_menu_menortiempo">Menor Tiempo</string>
+    <string name="resultados_menu_dificultad">Dificultad</string>
+    <string name="resultados_menu_alfa">Alfabéticamente</string>
 
 </resources>

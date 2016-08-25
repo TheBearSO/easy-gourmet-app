@@ -11,8 +11,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TabHost;
-import android.widget.TabWidget;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
@@ -115,23 +113,6 @@ public class Utils {
 	       child.setEnabled(enable);
 	       if (child instanceof ViewGroup) disableEnableControls(enable, (ViewGroup)child);
 	    }
-	}
-	
-	/**
-	 * Cambia el color de la tab activa.
-	 *
-	 * @param tabHost El objeto TabHost
-	 * @param tabBackgroungColor El color que van a tomar las  tabs no activas.
-	 * @param tabBackgroungColorActive El color que va a tomar la tab activa.
-	 */
-	public static void setActiveTab(TabHost tabHost, int tabBackgroungColor, int tabBackgroungColorActive){
-		TabWidget tabWidget = tabHost.getTabWidget();
-		
-		for (int i = 0; i < tabWidget.getChildCount(); i++) {
-			tabWidget.getChildAt(i).setBackgroundColor(tabBackgroungColor);
-        }
-		
-		tabWidget.getChildAt(tabHost.getCurrentTab()).setBackgroundColor(tabBackgroungColorActive);
 	}
 	
 	public static void hideKeyboard(Activity activity) {

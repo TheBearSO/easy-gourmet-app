@@ -4,9 +4,27 @@
     tools:context="com.easygourmet.main.Resultados" >
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/resultados_menu_massanos"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/resultados_menu_massanos"
+        app:showAsAction="never"/>
+    
+    <item
+        android:id="@+id/resultados_menu_menortiempo"
+        android:orderInCategory="100"
+        android:title="@string/resultados_menu_menortiempo"
+        app:showAsAction="never"/>
+    
+    <item
+        android:id="@+id/resultados_menu_dificultad"
+        android:orderInCategory="100"
+        android:title="@string/resultados_menu_dificultad"
+        app:showAsAction="never"/>
+    
+    <item
+        android:id="@+id/resultados_menu_alfa"
+        android:orderInCategory="100"
+        android:title="@string/resultados_menu_alfa"
         app:showAsAction="never"/>
 
 </menu>

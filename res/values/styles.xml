@@ -10,6 +10,70 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+    
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.ActionBar.Solid">
+	    <item name="titleTextStyle">@style/MyTitleTextStyle</item>
+	</style>
+	
+	<style name="MyTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+	    <item name="android:textColor">@color/white</item>
+	</style>
+    
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <!-- Override the app bar color -->
+    </style>
+    
+    
+    
+    
+    <style name="button_search_easyGourmet">
+	    <item name="android:layout_width">230dp</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textColor">#ffffff</item>
+	    <item name="android:background">@color/greenCheckbox</item>
+	    <item name="android:gravity">center</item>
+	    <item name="android:layout_marginLeft">15dp</item>
+	    <item name="android:layout_marginRight">15dp</item>
+	    <item name="android:padding">8dp</item>
+	    <item name="android:textSize">18sp</item>
+	    <item name="android:textStyle">bold</item>
+	    <item name="android:shadowColor">#000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">2</item>
+	    <item name="android:drawableLeft">@drawable/icon_buscar</item>
+	    <item name="android:drawablePadding">5dp</item>
+     </style>
+     
+    <style name="line">
+         <item name="android:layout_width">fill_parent</item>
+         <item name="android:layout_height">0.5dp</item>
+         <item name="android:background">@color/gray_smooth</item>
+    </style>
+    
+    <style name="textSize_h0">
+         <item name="android:textSize">28sp</item>
+    </style>
+    
+    <style name="textSize_h1">
+         <item name="android:textSize">21sp</item>
+    </style>
+    
+    <style name="textSize_h2">
+         <item name="android:textSize">18sp</item>
+         <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="textSize_h3">
+         <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="textSize_h4">
+         <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

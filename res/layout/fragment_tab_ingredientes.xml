@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+    	<TextView style="@style/line" />
     	
     	<EditText android:id="@+id/inputSearch"
 	        android:layout_width="match_parent"
