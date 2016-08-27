@@ -80,7 +80,7 @@ public class RecetaView extends Activity {
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollView_activity_recetas_vista);
 		
 		final ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
-		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 400, 300, receta_image, R.drawable.async_loader_recetas_view);
+		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 400, 300, receta_image, R.drawable.load_placeholder);
 	
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		

@@ -66,7 +66,7 @@ public class IngredinteView extends Activity {
 //            tituloRecetaCon.setText("Recetas con " + ingrediente.getNombre());
             
             List<Receta> recetas = RecetaDBA.getRecetasByIngrediente(IngredinteView.this, idIngrediente);
-    		this.adapterRecetas = new ResultadosAdapter(IngredinteView.this,  R.layout.list_recetas, recetas);
+    		this.adapterRecetas = new ResultadosAdapter(IngredinteView.this,  R.layout.list_recetas_small, recetas);
     		ListView listaRecetas = (ListView) findViewById(R.id.recetasi);
     		listaRecetas.setAdapter(this.adapterRecetas);
     		

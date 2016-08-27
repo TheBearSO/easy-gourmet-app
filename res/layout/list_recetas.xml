@@ -2,85 +2,100 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingLeft="3dp"
-    android:paddingRight="3dp"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
     android:divider="@null"
-    android:dividerHeight="0dp" >
-  	
+    android:dividerHeight="0dp"
+    android:orientation="vertical"
+    android:paddingBottom="2dp" >
 
+    <ImageView
+        android:id="@+id/resultados_image"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:contentDescription="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/load_placeholder" />
 
-        <ImageView
-            android:id="@+id/resultados_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical" >
+
+        <com.easygourmet.ui.ImageViewCircle
+            android:id="@+id/resultados_image_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="@null"
-            android:src="@drawable/async_loader_list_recetas" />
+            android:src="@drawable/tasty" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
-            android:paddingLeft="5dp" >
+            android:paddingLeft="8dp" >
 
-			    <TextView
-			        android:id="@+id/nombre"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:minHeight="25dp"
-			        android:text="Pollo al Disco"
-			        android:textColor="#333"
-			        android:textSize="17sp"
-			        android:textStyle="bold" />
-			    
-			    <TextView
-			        android:id="@+id/descripcion"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:minHeight="55dp"
-			        android:paddingBottom="3dp"
-			        android:paddingRight="5dp"
-			        android:text="Excelente Pollo al Disco con papas españolas y crudo"
-			        android:textColor="#666"
-			        android:textSize="15sp" />
-			    
-			    <LinearLayout
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:orientation="horizontal"
-		        android:gravity="center">
-		    			  
-				    <TextView android:id="@+id/tiempo"
-				        android:layout_width="0dp"
-			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1"
-				        android:textAppearance="@style/textSize_h3"
-				        android:textStyle="bold"
-				        android:drawableLeft="@drawable/resultados_tiempo"
-				        android:drawablePadding="3dp" />
-				    
-				    <TextView android:id="@+id/dificultad"
-				        android:layout_width="0dp"
-			        	android:layout_height="wrap_content"
-			        	android:layout_weight="1"
-				        android:textAppearance="@style/textSize_h3"
-				        android:textStyle="bold"
-				        android:drawableLeft="@drawable/resultados_dificultad"
-				        android:drawablePadding="3dp" />
-				    
-				    <TextView android:id="@+id/porciones"
-				        android:layout_width="0dp"
-			       	    android:layout_height="wrap_content"
-			        	android:layout_weight="1"
-				        android:textAppearance="@style/textSize_h3"
-				        android:textStyle="bold"
-				        android:drawableLeft="@drawable/resultados_porciones"
-				        android:drawablePadding="3dp"/>
-		    </LinearLayout>
-	    </LinearLayout>
+            <TextView
+                android:id="@+id/nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="25dp"
+                android:text="Pollo al Disco"
+                android:textColor="#333"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
-    
+            <TextView
+                android:id="@+id/descripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:paddingRight="5dp"
+                android:text="Excelente Pollo al Disco con papas españolas y crudo"
+                android:textColor="#666"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tiempo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/resultados_tiempo"
+                    android:drawablePadding="3dp"
+                    android:textAppearance="@style/textSize_h3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dificultad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/resultados_dificultad"
+                    android:drawablePadding="3dp"
+                    android:textAppearance="@style/textSize_h3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/porciones"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/resultados_porciones"
+                    android:drawablePadding="3dp"
+                    android:textAppearance="@style/textSize_h3"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

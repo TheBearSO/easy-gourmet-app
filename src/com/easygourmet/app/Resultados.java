@@ -46,11 +46,11 @@ public class Resultados extends ActionBarActivity {
 			
 			
 			
-			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas, recetas);
+			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas_small, recetas);
 			
 		} else if(idCategoria != null){
 			this.recetas = RecetaDBA.getRecetasByCategoria(Resultados.this, idCategoria);
-			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas, recetas);
+			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas_small, recetas);
 		}
 		
 		setTitle(this.recetas.size() + " Resultados");

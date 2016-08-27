@@ -25,7 +25,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@null"
                 android:scaleType="fitXY"
-                android:src="@drawable/async_loader_recetas_view" />
+                android:src="@drawable/load_placeholder" />
         </RelativeLayout>
 
         <!-- Nombre Receta -->

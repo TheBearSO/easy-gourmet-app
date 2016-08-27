@@ -2,6 +2,7 @@ package com.easygourmet.app;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabContentFactory;
 import android.widget.TabHost.TabSpec;
+import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.easygourmet.main.R;
@@ -194,8 +196,17 @@ public class MenuPrincipal extends FragmentActivity {
 
 	
 	private void setActiveTab(){
-        tabHost.getTabWidget().getChildAt(tabHost.getCurrentTab())
-        		.setBackgroundResource(R.drawable.tab_indicator);
+		TabWidget tabWidget = tabHost.getTabWidget();
+		TextView tv;
+		for(int i=0; i < tabWidget.getChildCount(); i++){
+			tv = (TextView) tabWidget.getChildAt(i).findViewById(android.R.id.title);
+			tv.setTypeface(Typeface.create(tv.getTypeface(), Typeface.NORMAL));
+        }
+		
+		View current = tabWidget.getChildAt(tabHost.getCurrentTab());
+		current.setBackgroundResource(R.drawable.tab_indicator);
+		tv = (TextView) current.findViewById(android.R.id.title);
+		tv.setTypeface(Typeface.create(tv.getTypeface(), Typeface.BOLD));
 	}
 	
 	private void setTabsTextColor(){
