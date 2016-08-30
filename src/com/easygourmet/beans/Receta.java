@@ -76,6 +76,12 @@ public class Receta {
 	@DatabaseField(defaultValue = "1")
 	private int porciones;
 	
+	@DatabaseField(width = 250)
+	private String url_video;
+	
+	@DatabaseField
+	private int version;
+	
 	/**
 	 * Es el id de la categoria a la que pertenece la receta.
 	*/
@@ -179,6 +185,22 @@ public class Receta {
 
 	public void setCeliaco(boolean celiaco) {
 		this.celiaco = celiaco;
+	}
+	
+	public String getUrl_video() {
+		return url_video;
+	}
+
+	public void setUrl_video(String url_video) {
+		this.url_video = url_video;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	public ForeignCollection<RecetaDetalle> getDetalles() {

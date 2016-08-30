@@ -186,7 +186,9 @@ public class RecetaDBA {
 			QueryBuilder<RecetaDetalle, Integer> recetaDetalleSubQB = recetaDetalleDao.queryBuilder();
 			
 			recetaQB.join(recetaDetalleQB);
-			recetaDetalleSubQB.selectColumns("receta_idReceta").where().in("ingrediente_idIngrediente", ingredintesElegidos);
+			if(ingredintesElegidos.size() > 0){
+				recetaDetalleSubQB.selectColumns("receta_idReceta").where().in("ingrediente_idIngrediente", ingredintesElegidos);
+			}
 			recetaDetalleSubQB.groupBy("receta_idReceta");
 			recetaDetalleSubQB.having("COUNT(DISTINCT ingrediente_idIngrediente) >= " + ingredintesElegidos.size());
 			

@@ -68,6 +68,8 @@ public class Ingrediente {
 	/** Los detalles en los que aparece el ingrediente. */
 	@ForeignCollectionField(eager = true)
 	private ForeignCollection<RecetaDetalle> detalles;
+	
+	private int version;
 
 	/**
 	 * Constructor Vacío.
@@ -154,6 +156,14 @@ public class Ingrediente {
 		this.detalles = detalles;
 	}
 	
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -8,7 +8,7 @@
     <string name="title_activity_resultados">Resultados</string>
     <string name="title_activity_recetas_vista">RecetasVista</string>
     <string name="title_activity_ingredintes_vista">IngredintesVista</string>
-    <string name="menu_principal_queHayEnLaNevera">¿Que Hay en tu Nevera?</string>
+    <string name="menu_principal_queHayEnLaNevera">Escribe que hay en tu Heladera</string>
     <string name="menu_principal_buscarIngredinetes">Buscar Ingredintes&#8230;</string>
     <string name="menu_principal_receta_del_dia">Ver\nReceta del Día</string>
     <string name="menu_principal_vegetariano">Soy Vegetariano</string>

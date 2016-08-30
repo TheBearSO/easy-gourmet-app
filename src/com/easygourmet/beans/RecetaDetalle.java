@@ -38,6 +38,9 @@ public class RecetaDetalle {
 	@DatabaseField(foreign = true, foreignColumnName = "idIngrediente", canBeNull = false)
 	private Ingrediente ingrediente;
 	
+	@DatabaseField
+	private int version;
+	
 	/**
 	 * Constructor vacío.
 	 */
@@ -111,6 +114,14 @@ public class RecetaDetalle {
 
 	public void setEsIndispensable(boolean esIndispensable) {
 		this.esIndispensable = esIndispensable;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	

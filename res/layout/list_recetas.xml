@@ -3,9 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:divider="@null"
-    android:dividerHeight="0dp"
+    android:dividerHeight="1dp"
     android:orientation="vertical"
-    android:paddingBottom="2dp" >
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:paddingTop="3dp"
+    android:background="@color/tabs_background" >
 
     <ImageView
         android:id="@+id/resultados_image"
@@ -23,7 +26,8 @@
         android:paddingRight="5dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:gravity="center_vertical" >
+        android:gravity="center_vertical"
+        android:background="@color/white" >
 
         <com.easygourmet.ui.ImageViewCircle
             android:id="@+id/resultados_image_circle"

@@ -82,7 +82,7 @@ public class FragmentTabNevera extends Fragment {
   		this.layoutIngredientesElegidosNevera = (RowLayout) v.findViewById(R.id.layoutIngredientesElegidosNevera);
 		
 		
-  		this.adapterAutocompleteIngredientesNevera = new ArrayAdapter<Ingrediente>(v.getContext(),  R.layout.list_ingredientes, R.id.nombre_ingrediente, this.ingredientesNevera);
+  		this.adapterAutocompleteIngredientesNevera = new ArrayAdapter<Ingrediente>(v.getContext(),  R.layout.list_autocomplete, R.id.nombre_ingrediente, this.ingredientesNevera);
 		this.adapterAutocompleteIngredientesNevera.setNotifyOnChange(true);
 		
 		
@@ -143,7 +143,7 @@ public class FragmentTabNevera extends Fragment {
 			@Override
 			public void onClick(View v) {
 				
-				if(ingredientesElegidos.size() > 0){
+				//if(ingredientesElegidos.size() > 0){
 					//DBUtils.setUserSettings(FragmentTabNevera.this, FragmentTabNevera.this.helper);
 					ArrayList<Integer> ingredinetesElegidos = new ArrayList<Integer>();
 					for(Ingrediente ingrediente : ingredientesElegidos){
@@ -153,7 +153,7 @@ public class FragmentTabNevera extends Fragment {
 					Intent i = new Intent(v.getContext(), Resultados.class);
 					i.putIntegerArrayListExtra("ingredientesElegidos", ingredinetesElegidos);
 					FragmentTabNevera.this.startActivity(i);
-				}
+				//}
 			}
 		});
         
