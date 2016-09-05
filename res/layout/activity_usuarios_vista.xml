@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/tabs_background"
+    android:orientation="vertical" >
+
+    <!-- Titulo -->
+
+    <LinearLayout
+        android:id="@+id/layout_categoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/greenCheckbox"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp" >
+
+        <com.easygourmet.ui.ImageViewCircle
+            android:id="@+id/usuarios_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:src="@drawable/tasty" />
+
+        <TextView
+            android:id="@+id/usuarios_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Tasty"
+            android:textAppearance="@style/textSize_h0"
+            android:textColor="@color/tabs_background"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usuarios_descripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/recetas_vista_categoria_white"
+            android:drawablePadding="3dp"
+            android:text="Recetas Rápidas y Sabrosas"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- Ingrediente Tipo -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:padding="5dp" >
+
+        <!-- Cantidad -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal"
+            android:padding="3dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.27"
+                android:text="Url:"
+                android:textAppearance="@style/textSize_h3"
+                android:textColor="@color/black_medium"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/usuarios_url"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.73"
+                android:text="www.facebook.com"
+                android:textAppearance="@style/textSize_h3"
+                android:textColor="@color/black_medium" />
+        </LinearLayout>
+
+        <TextView style="@style/line" />
+
+        <!-- Lista de Recetas con este ingredientes -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!--
+             <TextView
+            android:id="@+id/recetas_con"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Recetas Con Zanahoria"
+            android:textAppearance="@style/textSize_h2"
+            android:textColor="@color/greenCheckbox" />
+            -->
+
+            <ListView
+                android:id="@+id/recetasi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -85,6 +85,12 @@ public class Receta {
 	/**
 	 * Es el id de la categoria a la que pertenece la receta.
 	*/
+	@DatabaseField(foreign = true, foreignColumnName = Usuario.FIELD_NAME_id, canBeNull = false)
+	private Usuario usuario;
+	
+	/**
+	 * Es el id de la categoria a la que pertenece la receta.
+	*/
 	@DatabaseField(foreign = true, foreignColumnName = RecetaCategoria.FIELD_NAME_id, canBeNull = false)
 	private RecetaCategoria categoria;
 	
@@ -153,6 +159,14 @@ public class Receta {
 
 	public void setPorciones(int porciones) {
 		this.porciones = porciones;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public RecetaCategoria getCategoria() {

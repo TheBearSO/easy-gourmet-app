@@ -16,7 +16,7 @@
             android:layout_marginTop="15dp" />
 
         <ListView
-            android:id="@+id/listViewIngredintes"
+            android:id="@+id/listViewUsuarios"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
         </ListView>

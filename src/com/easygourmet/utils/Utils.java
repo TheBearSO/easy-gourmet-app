@@ -1,8 +1,5 @@
 package com.easygourmet.utils;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -14,6 +11,7 @@ import android.widget.ListView;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.Transformation;
+import com.cloudinary.utils.ObjectUtils;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -22,6 +20,10 @@ import com.squareup.picasso.Picasso;
 public class Utils {
 	
 	public static final String URL_CLOUDINARY_DB_JSON = "http://res.cloudinary.com/dwt3ti4fn/raw/upload/v1448830509/db.json";
+	private static Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+			  "cloud_name", "dwt3ti4fn",
+			  "api_key", "862626225766584",
+			  "api_secret", "OuCR8BIYKHVRI_Ydy2WmZHYYCAY"));
 	
 	/**
 	 * Conviete un boolean a int.
@@ -54,11 +56,6 @@ public class Utils {
 	 * @return Un string con la url (coludinary url).
 	 */
 	private static String getColudinaryURL(String fileName, int width, int height){
-		Map<String, String> config = new HashMap<>();
-		config.put("cloud_name", "dwt3ti4fn");
-		config.put("api_key", "862626225766584");
-		config.put("api_secret", "OuCR8BIYKHVRI_Ydy2WmZHYYCAY");
-		Cloudinary cloudinary = new Cloudinary(config);
 		
 		String url = cloudinary.url()
 							   .format("jpg")
@@ -67,6 +64,16 @@ public class Utils {
 							   ).generate(fileName);
 		
 		return url;
+	}
+	
+	public static void preLoadImage(final Context context, String fileName, int width, int height){
+		
+		final String url = getColudinaryURL(fileName, width, height);
+		
+		Picasso.with(context)
+		.load(url)
+		.noFade()
+		.fetch();
 	}
 	
 	public static void loadImage(final Context context, String fileName, int width, int height, final ImageView img, final int asyncLoader){

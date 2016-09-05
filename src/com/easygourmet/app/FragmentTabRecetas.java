@@ -26,7 +26,7 @@ public class FragmentTabRecetas extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		View v = inflater.inflate(R.layout.fragment_tab_recetas, container, false);
 		
 		initRecetas(v);
@@ -40,7 +40,7 @@ public class FragmentTabRecetas extends Fragment {
 	private void initRecetas(View v){
 		
 		List<Receta> recetas = RecetaDBA.getAllWhere(v.getContext());
-		this.adapterRecetas = new ResultadosAdapter(v.getContext(),  R.layout.list_recetas,recetas);
+		this.adapterRecetas = new ResultadosAdapter(v.getContext(),  R.layout.list_recetas, recetas);
 		ListView listaRecetas = (ListView) v.findViewById(R.id.recetas);
 		listaRecetas.setAdapter(this.adapterRecetas);
 		

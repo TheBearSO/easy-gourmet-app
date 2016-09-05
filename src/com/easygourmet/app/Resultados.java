@@ -44,8 +44,6 @@ public class Resultados extends ActionBarActivity {
 				this.recetas = RecetaDBA.getRecetasByIngredientesAnyMatch(Resultados.this, ingredintesElegidos);
 			}
 			
-			
-			
 			this.adapterRecetas = new ResultadosAdapter(this, R.layout.list_recetas_small, recetas);
 			
 		} else if(idCategoria != null){

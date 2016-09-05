@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.easygourmet.app.FragmentTabIngredientes;
 import com.easygourmet.app.FragmentTabNevera;
 import com.easygourmet.app.FragmentTabRecetas;
+import com.easygourmet.app.FragmentTabUsuarios;
 
 public class MenuPrincipalPageTabAdapter extends FragmentPagerAdapter {
 
@@ -24,7 +24,7 @@ public class MenuPrincipalPageTabAdapter extends FragmentPagerAdapter {
 			case 1:
 				return new FragmentTabRecetas();
 			case 2:
-				return new FragmentTabIngredientes();
+				return new FragmentTabUsuarios();
 			default:
 				return new FragmentTabNevera();
 		}

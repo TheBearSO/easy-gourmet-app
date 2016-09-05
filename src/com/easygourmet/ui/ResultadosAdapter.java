@@ -43,14 +43,25 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
      * @param resource El id del resource
      * @param recetas La lista de recetas
      */
-    public ResultadosAdapter(Context context, int resource,
-			List<Receta> recetas) {
+    public ResultadosAdapter(Context context, int resource, List<Receta> recetas) {
 		
 		super(context, resource, recetas);
 		
 		this.context = context;
 	    this.recetas = recetas;
 	    this.layoutResourceId = resource;
+	    
+	    int size = Math.min(10, recetas.size());
+	    Receta r;
+	    for (int i = 0; i < size; i++) {
+	    	r = recetas.get(i);
+	    	String imageName = "recetas/" + r.getIdReceta();
+	    	if(layoutResourceId == R.layout.list_recetas_small){
+	    		Utils.preLoadImage(context, imageName, 160, 160);
+	        }else{
+	        	Utils.preLoadImage(context, imageName, 400, 300);
+	        }
+		}
 	}
 
 	/* (non-Javadoc)
@@ -58,73 +69,52 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
 	 */
 	@Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        List_RecetasXML list_recetas = null;
-        TextView textViewSalud = null;
+        
+        ViewHolderReceta viewHolderReceta = null;
 
-        if(view == null)
-        {
+        if(convertView == null){
+
+	        viewHolderReceta = new ViewHolderReceta();
+	        
             LayoutInflater inflater = LayoutInflater.from(this.context);
-            view = inflater.inflate(layoutResourceId, parent, false);
+            convertView = inflater.inflate(layoutResourceId, parent, false);
             
-            view.setTag(list_recetas);
+            viewHolderReceta.resultados_image = (ImageView) convertView.findViewById(R.id.resultados_image);
+            viewHolderReceta.nombre = (TextView) convertView.findViewById(R.id.nombre);
+            viewHolderReceta.descripcion = (TextView) convertView.findViewById(R.id.descripcion);
+            viewHolderReceta.tiempo = (TextView) convertView.findViewById(R.id.tiempo);
+            viewHolderReceta.dificultad = (TextView) convertView.findViewById(R.id.dificultad);
+            viewHolderReceta.porciones = (TextView) convertView.findViewById(R.id.porciones);
+            viewHolderReceta.salud = (TextView) convertView.findViewById(R.id.salud);
             
+            convertView.setTag(viewHolderReceta);
+            
+        }else{
+        	viewHolderReceta = (ViewHolderReceta) convertView.getTag();
         }
         
         Receta r = recetas.get(position);
         
-        if(r != null){
-	        list_recetas = new List_RecetasXML();
-	        list_recetas.resultados_image = (ImageView) view.findViewById(R.id.resultados_image);
-	        list_recetas.nombre = (TextView) view.findViewById(R.id.nombre);
-	        list_recetas.descripcion = (TextView) view.findViewById(R.id.descripcion);
-	        list_recetas.tiempo = (TextView) view.findViewById(R.id.tiempo);
-	        list_recetas.dificultad = (TextView) view.findViewById(R.id.dificultad);
-	        list_recetas.porciones = (TextView) view.findViewById(R.id.porciones);
-	        
-	        //textViewSalud = (TextView) view.findViewById(R.id.salud);;
-	        list_recetas.salud = textViewSalud;
-	        
-	        if(layoutResourceId == R.layout.list_recetas_small){
-	        	Utils.loadImage(getContext(), String.valueOf(r.getIdReceta()), 160, 160, list_recetas.resultados_image, R.drawable.load_placeholder);
-	        }else{
-	        	Utils.loadImage(getContext(), String.valueOf(r.getIdReceta()), 400, 300, list_recetas.resultados_image, R.drawable.load_placeholder);
-	        }
-	        
-	        
-	        list_recetas.nombre.setText(r.getNombre());
-	        list_recetas.descripcion.setText(r.getDescripcion());
-	        list_recetas.tiempo.setText(r.getTiempo());
-	        list_recetas.dificultad.setText(r.getDificultad());
-	        list_recetas.porciones.setText(Integer.toString(r.getPorciones()));
-	        
-//	        if(textViewSalud != null){
-//	        	int rojo = Color.rgb(178,34,34);
-//	        	int amarillo = Color.rgb(190, 165, 0);
-//	        	int verde = Color.rgb(0,100,0);
-//	        	
-//	        	int salud = r.getSalud();
-//	        	if(salud > 67){
-//	        		textViewSalud.setTextColor(verde);
-//	        		list_recetas.salud.setText(salud + "% Sano");
-//	        	}else if(salud > 33 && salud <= 67){
-//	        		textViewSalud.setTextColor(amarillo);
-//	        		list_recetas.salud.setText(salud + "% Sano");
-//	        	}else{
-//	        		textViewSalud.setTextColor(rojo);
-//	        		list_recetas.salud.setText(salud + "% Sano");
-//	        	}
-//	        	
-//	        }
+        String imageName = "recetas/" + r.getIdReceta();
+        if(layoutResourceId == R.layout.list_recetas_small){
+        	Utils.loadImage(getContext(), imageName, 160, 160, viewHolderReceta.resultados_image, R.drawable.load_placeholder);
+        }else{
+        	Utils.loadImage(getContext(), imageName, 400, 300, viewHolderReceta.resultados_image, R.drawable.load_placeholder);
         }
         
-        return view;
+        viewHolderReceta.nombre.setText(r.getNombre());
+        viewHolderReceta.descripcion.setText(r.getDescripcion());
+        viewHolderReceta.tiempo.setText(r.getTiempo());
+        viewHolderReceta.dificultad.setText(r.getDificultad());
+        viewHolderReceta.porciones.setText(Integer.toString(r.getPorciones()));
+	      
+        return convertView;
     }
 
     /**
      * Clase estática utilizada para mapear los elementos del 'list_recetas.xml' ordenadamente.
     */
-    static class List_RecetasXML
+    static class ViewHolderReceta
     {
     	ImageView resultados_image;
         TextView nombre;

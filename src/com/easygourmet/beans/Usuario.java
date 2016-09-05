@@ -121,9 +121,10 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", username=" + username
-				+ ", descripcion=" + descripcion + ", url=" + url
-				+ ", version=" + version + "]";
+		if(username != null && username.length() > 0){
+			username = username.substring(0, 1).toUpperCase() + username.substring(1);
+		}
+		return username;
 	}
 	
 }

@@ -80,7 +80,8 @@ public class RecetaView extends Activity {
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollView_activity_recetas_vista);
 		
 		final ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
-		Utils.loadImage(getApplicationContext(), String.valueOf(r.getIdReceta()), 400, 300, receta_image, R.drawable.load_placeholder);
+		String imageName = "recetas/" + r.getIdReceta();
+		Utils.loadImage(getApplicationContext(), imageName, 400, 300, receta_image, R.drawable.load_placeholder);
 	
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		
@@ -96,7 +97,7 @@ public class RecetaView extends Activity {
 		receta_categoria.setText(r.getCategoria().getDescripcion());
 		//receta_pais.setText(r.getPais().getNombre());
 		receta_tiempo.setText(r.getTiempo());
-		receta_dificultad.setText(r.getDificultad());
+		receta_dificultad.setText(r.getUsuario().getUsername());
 		
 		porciones = procionesIniciales = r.getPorciones();
 		receta_porciones.setText(Integer.toString(porciones));

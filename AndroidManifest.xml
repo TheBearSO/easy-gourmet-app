@@ -41,6 +41,10 @@
             android:name="com.easygourmet.app.IngredinteView"
             android:label="@string/title_activity_ingredintes_vista" >
         </activity>
+        <activity
+            android:name="com.easygourmet.app.UsuarioView"
+            android:label="@string/title_activity_ingredintes_vista" >
+        </activity>
     </application>
 
 </manifest>
