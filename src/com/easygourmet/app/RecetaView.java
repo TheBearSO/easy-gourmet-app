@@ -58,25 +58,6 @@ public class RecetaView extends Activity {
 		setRecetaToView(receta);
 		
 	}
-
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.recetas_vista, menu);
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		// Handle action bar item clicks here. The action bar will
-//		// automatically handle clicks on the Home/Up button, so long
-//		// as you specify a parent activity in AndroidManifest.xml.
-//		int id = item.getItemId();
-//		if (id == R.id.action_settings) {
-//			return true;
-//		}
-//		return super.onOptionsItemSelected(item);
-//	}
 	
 	private void setRecetaToView(Receta r){
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollView_activity_recetas_vista);
@@ -89,7 +70,6 @@ public class RecetaView extends Activity {
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		
 		TextView receta_categoria = (TextView) sv.findViewById(R.id.receta_categoria);
-		//TextView receta_pais = (TextView) sv.findViewById(R.id.receta_pais);
 		TextView receta_tiempo = (TextView) sv.findViewById(R.id.receta_tiempo);
 		TextView receta_dificultad = (TextView) sv.findViewById(R.id.receta_dificultad);
 		TextView receta_porciones = (TextView) sv.findViewById(R.id.receta_porciones);
@@ -98,9 +78,8 @@ public class RecetaView extends Activity {
 		
 		receta_nombre.setText(r.getNombre());
 		receta_categoria.setText(r.getCategoria().getDescripcion());
-		//receta_pais.setText(r.getPais().getNombre());
 		receta_tiempo.setText(r.getTiempo());
-		receta_dificultad.setText(r.getUsuario().getUsername());
+		receta_dificultad.setText(r.getDificultad());
 		
 		porciones = procionesIniciales = r.getPorciones();
 		receta_porciones.setText(Integer.toString(porciones));
