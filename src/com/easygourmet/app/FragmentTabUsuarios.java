@@ -13,26 +13,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import com.easygourmet.beans.Usuario;
 import com.easygourmet.db.UsuariosDBA;
 import com.easygourmet.main.R;
+import com.easygourmet.ui.UsuariosAdapter;
 
 public class FragmentTabUsuarios extends Fragment {
 	
-	private ArrayAdapter<Usuario> adapterUsuarios;
+	private UsuariosAdapter usuariosAdapter;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		
 		View v = inflater.inflate(R.layout.fragment_tab_usuarios, container, false);
-		
-		//TABS Usuarios
-		
 		
 		initUsuarios(v);
 		
@@ -46,13 +43,13 @@ public class FragmentTabUsuarios extends Fragment {
 		
 		ListView listViewIngredintes = (ListView) v.findViewById(R.id.listViewUsuarios);
 		List<Usuario> usuarios = UsuariosDBA.getAllUsuarios(v.getContext(), Usuario.FIELD_NAME_username, true);
-		this.adapterUsuarios = new ArrayAdapter<Usuario>(v.getContext(), R.layout.list_usuarios, R.id.list_usuarios_username, usuarios);
-		listViewIngredintes.setAdapter(this.adapterUsuarios);
+		this.usuariosAdapter = new UsuariosAdapter(v.getContext(), R.layout.list_usuarios, usuarios);
+		listViewIngredintes.setAdapter(this.usuariosAdapter);
 		
 		listViewIngredintes.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Usuario usuario = FragmentTabUsuarios.this.adapterUsuarios.getItem(position);
+				Usuario usuario = FragmentTabUsuarios.this.usuariosAdapter.getItem(position);
 				Intent i = new Intent(getActivity(), UsuarioView.class);
 				i.putExtra("id", usuario.getId());
 				i.putExtra("username", usuario.getUsername());
@@ -66,7 +63,7 @@ public class FragmentTabUsuarios extends Fragment {
            
            @Override
            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-        	   FragmentTabUsuarios.this.adapterUsuarios.getFilter().filter(cs);   
+        	   FragmentTabUsuarios.this.usuariosAdapter.getFilter().filter(cs);   
            }
             
            @Override

@@ -12,6 +12,20 @@ import com.j256.ormlite.stmt.QueryBuilder;
 
 public class UsuariosDBA {
 	
+	public static Usuario getRecetaById(int idReceta, Context context){
+		
+		Usuario u = null;
+		try {
+			Dao<Usuario, Integer> usuarioDao = DBHelper.getHelper(context).getDao(Usuario.class);
+			u = usuarioDao.queryForId(idReceta);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return u;
+	}
+	
 	public static List<Usuario> getAllUsuarios(Context context, String orderByColumnName, boolean orderByAsc) {
 
 		List<Usuario> usuarios = new ArrayList<>();

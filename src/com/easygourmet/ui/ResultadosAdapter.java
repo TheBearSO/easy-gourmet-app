@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.easygourmet.beans.Receta;
+import com.easygourmet.beans.Usuario;
 import com.easygourmet.main.R;
+import com.easygourmet.utils.ImageUtils;
 import com.easygourmet.utils.Utils;
 
 /**
@@ -85,7 +87,7 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
             viewHolderReceta.tiempo = (TextView) convertView.findViewById(R.id.tiempo);
             viewHolderReceta.dificultad = (TextView) convertView.findViewById(R.id.dificultad);
             viewHolderReceta.porciones = (TextView) convertView.findViewById(R.id.porciones);
-            viewHolderReceta.salud = (TextView) convertView.findViewById(R.id.salud);
+            viewHolderReceta.resultados_usuarios_image = (ImageView) convertView.findViewById(R.id.resultados_usuarios_image);
             
             convertView.setTag(viewHolderReceta);
             
@@ -95,11 +97,25 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
         
         Receta r = recetas.get(position);
         
-        String imageName = "recetas/" + r.getIdReceta();
+        String imageName = ImageUtils.generateFileName(Receta.TABLE_NAME, String.valueOf(r.getIdReceta()));
         if(layoutResourceId == R.layout.list_recetas_small){
-        	Utils.loadImage(getContext(), imageName, 160, 160, viewHolderReceta.resultados_image, R.drawable.load_placeholder);
+        	Utils.loadImage(
+        		this.context, 
+        		imageName, 
+        		160, 
+        		160, 
+        		viewHolderReceta.resultados_image, 
+        		R.drawable.load_placeholder
+        	);
         }else{
-        	Utils.loadImage(getContext(), imageName, 400, 300, viewHolderReceta.resultados_image, R.drawable.load_placeholder);
+        	Utils.loadImage(
+        		this.context, 
+        		imageName,
+        		400, 
+        		300, 
+        		viewHolderReceta.resultados_image,
+        		R.drawable.load_placeholder
+        	);
         }
         
         viewHolderReceta.nombre.setText(r.getNombre());
@@ -107,6 +123,16 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
         viewHolderReceta.tiempo.setText(r.getTiempo());
         viewHolderReceta.dificultad.setText(r.getDificultad());
         viewHolderReceta.porciones.setText(Integer.toString(r.getPorciones()));
+        
+    	Utils.loadImage(
+    		this.context, 
+    		ImageUtils.generateFileName(Usuario.TABLE_NAME, r.getUsuario().getUsername()), 
+    		100, 
+    		100, 
+    		viewHolderReceta.resultados_usuarios_image, 
+    		R.drawable.load_placeholder
+    	);
+
 	      
         return convertView;
     }
@@ -122,7 +148,7 @@ public class ResultadosAdapter extends ArrayAdapter<Receta>{
         TextView tiempo;
         TextView dificultad;
         TextView porciones;
-        TextView salud;
+        ImageView resultados_usuarios_image;
     }
 	
 }

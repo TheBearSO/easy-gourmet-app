@@ -1,6 +1,8 @@
 package com.easygourmet.beans;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
@@ -31,6 +33,9 @@ public class Usuario {
 	
 	@DatabaseField
 	private int version;
+	
+	@ForeignCollectionField(eager = true)
+	private ForeignCollection<Receta> recetas;
 	
 	public Usuario(){}
 
@@ -72,6 +77,14 @@ public class Usuario {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+	
+	public ForeignCollection<Receta> getRecetas() {
+		return recetas;
+	}
+
+	public void setRecetas(ForeignCollection<Receta> recetas) {
+		this.recetas = recetas;
 	}
 
 	@Override
@@ -121,9 +134,6 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		if(username != null && username.length() > 0){
-			username = username.substring(0, 1).toUpperCase() + username.substring(1);
-		}
 		return username;
 	}
 	

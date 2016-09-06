@@ -9,7 +9,7 @@
     <string name="title_activity_recetas_vista">RecetasVista</string>
     <string name="title_activity_ingredintes_vista">IngredintesVista</string>
     <string name="menu_principal_queHayEnLaNevera">Escribe que hay en tu Heladera</string>
-    <string name="menu_principal_buscarIngredinetes">Buscar Ingredintes&#8230;</string>
+    <string name="fragment_tab_usuarios_search">Buscar Usuarios&#8230;</string>
     <string name="menu_principal_receta_del_dia">Ver\nReceta del Día</string>
     <string name="menu_principal_vegetariano">Soy Vegetariano</string>
     <string name="menu_principal_vegano">Soy Vegano</string>

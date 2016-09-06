@@ -30,7 +30,7 @@
         android:background="@color/white" >
 
         <com.easygourmet.ui.ImageViewCircle
-            android:id="@+id/resultados_image_circle"
+            android:id="@+id/resultados_usuarios_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@null"

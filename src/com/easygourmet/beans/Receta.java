@@ -94,11 +94,9 @@ public class Receta {
 	@DatabaseField(foreign = true, foreignColumnName = RecetaCategoria.FIELD_NAME_id, canBeNull = false)
 	private RecetaCategoria categoria;
 	
-	/**
-	 * Es el id auto incremental de la receta.
-	*/
 	@ForeignCollectionField(eager = true)
 	private ForeignCollection<RecetaDetalle> detalles;
+	
 	
 	/**
 	 * Consturctor Vacío.

@@ -11,6 +11,7 @@ import com.easygourmet.beans.Usuario;
 import com.easygourmet.db.DBHelper;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.ResultadosAdapter;
+import com.easygourmet.utils.ImageUtils;
 import com.easygourmet.utils.Utils;
 import com.j256.ormlite.dao.Dao;
 
@@ -49,8 +50,14 @@ public class UsuarioView extends Activity {
 			TextView descripcion = (TextView) findViewById(R.id.usuarios_descripcion);
 			TextView url = (TextView) findViewById(R.id.usuarios_url);
             
-			String imageName = "usuarios/" + usuario.getUsername();
-			Utils.loadImage(this, imageName, 100, 100, image, R.drawable.load_placeholder);
+			Utils.loadImage(
+	    		this, 
+	    		ImageUtils.generateFileName(Usuario.TABLE_NAME, usuario.getUsername()), 
+	    		100, 
+	    		100, 
+	    		image, 
+	    		R.drawable.load_placeholder
+	    	);
             username.setText(usuario.getUsername());
             descripcion.setText(usuario.getDescripcion());
             url.setText(usuario.getUrl());

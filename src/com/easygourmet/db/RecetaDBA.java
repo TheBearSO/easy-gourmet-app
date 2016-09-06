@@ -128,6 +128,10 @@ public class RecetaDBA {
 				r.setVegetariano( Utils.intToBoolean(c.getInt(c.getColumnIndex("vegetariano"))) );
 				r.setVegano( Utils.intToBoolean(c.getInt(c.getColumnIndex("vegano"))) );
 				r.setCeliaco( Utils.intToBoolean(c.getInt(c.getColumnIndex("celiaco"))) );
+				
+				r.setUsuario(
+					UsuariosDBA.getRecetaById(c.getInt(c.getColumnIndex("usuario_id")), context)
+				);
 			    
 				recetas.add(r);
 			}

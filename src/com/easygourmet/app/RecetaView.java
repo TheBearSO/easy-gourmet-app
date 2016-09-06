@@ -17,9 +17,11 @@ import android.widget.TextView;
 
 import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaDetalle;
+import com.easygourmet.beans.Usuario;
 import com.easygourmet.db.RecetaDBA;
 import com.easygourmet.main.R;
 import com.easygourmet.ui.RecetaDetalleAdapter;
+import com.easygourmet.utils.ImageUtils;
 import com.easygourmet.utils.Utils;
 
 public class RecetaView extends Activity {
@@ -80,9 +82,10 @@ public class RecetaView extends Activity {
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollView_activity_recetas_vista);
 		
 		final ImageView receta_image = (ImageView) sv.findViewById(R.id.receta_image);
-		String imageName = "recetas/" + r.getIdReceta();
+		String imageName = ImageUtils.generateFileName(Receta.TABLE_NAME, ("" + r.getIdReceta()));
 		Utils.loadImage(getApplicationContext(), imageName, 400, 300, receta_image, R.drawable.load_placeholder);
 	
+		ImageView receta_usuarios_image = (ImageView) sv.findViewById(R.id.receta_usuarios_image);
 		TextView receta_nombre = (TextView) sv.findViewById(R.id.receta_nombre);
 		
 		TextView receta_categoria = (TextView) sv.findViewById(R.id.receta_categoria);
@@ -105,6 +108,15 @@ public class RecetaView extends Activity {
 		receta_salud.setText(Integer.toString(r.getSalud()) + "% Sano");
 		
 		receta_preparacion.setText(r.getPreparacion());
+		
+		Utils.loadImage(
+    		this, 
+    		ImageUtils.generateFileName(Usuario.TABLE_NAME, r.getUsuario().getUsername()), 
+    		100, 
+    		100, 
+    		receta_usuarios_image, 
+    		R.drawable.load_placeholder
+    	);
 		
 		//lista de ingredinetes de la receta vista
 		this.detalles = new ArrayList<>(r.getDetalles());

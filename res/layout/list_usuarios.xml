@@ -7,6 +7,7 @@
     android:padding="5dp" >
 
     <com.easygourmet.ui.ImageViewCircle
+        android:id="@+id/list_usuarios_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@null"
@@ -26,20 +27,21 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
+         <TextView
+            android:id="@+id/list_usuarios_recetas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="54 Recetas"
             android:textSize="15sp"
             android:paddingTop="3dp" />
-        <RatingBar
+<!--        <RatingBar
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="?android:attr/ratingBarStyleSmall"
             android:numStars="5"
             android:stepSize="0.1"
-            android:isIndicator="true" />
+            android:isIndicator="true" /> -->
     </LinearLayout>
 
 </LinearLayout>
