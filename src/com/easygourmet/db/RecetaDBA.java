@@ -13,6 +13,7 @@ import com.easygourmet.beans.Receta;
 import com.easygourmet.beans.RecetaCategoria;
 import com.easygourmet.beans.RecetaDetalle;
 import com.easygourmet.beans.UserSettings;
+import com.easygourmet.beans.Usuario;
 import com.easygourmet.utils.Utils;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.QueryBuilder;
@@ -104,8 +105,9 @@ public class RecetaDBA {
 	public static List<Receta> getRecetasByIngrediente(Context context, Integer idIngrediente){
 		
 		final String sql = "SELECT * FROM ( " +
-								"SELECT COUNT(d.idDetalle) AS det, *  from recetas r " +
+								"SELECT COUNT(d.idDetalle) AS det, u.username AS username, r.* FROM recetas r " +
 								"LEFT JOIN recetasDetalles d ON r.idReceta = d.receta_idReceta " +
+								"LEFT JOIN usuarios u ON r.usuario_id = u.id " +
 								"GROUP BY d.receta_idReceta " +
 							 ") sub " +
 							 "LEFT JOIN recetasDetalles d1 on sub.idReceta = d1.receta_idReceta " +
@@ -130,7 +132,10 @@ public class RecetaDBA {
 				r.setCeliaco( Utils.intToBoolean(c.getInt(c.getColumnIndex("celiaco"))) );
 				
 				r.setUsuario(
-					UsuariosDBA.getRecetaById(c.getInt(c.getColumnIndex("usuario_id")), context)
+					new Usuario(
+						c.getInt(c.getColumnIndex("usuario_id")), 
+						c.getString(c.getColumnIndex("username"))
+					)
 				);
 			    
 				recetas.add(r);

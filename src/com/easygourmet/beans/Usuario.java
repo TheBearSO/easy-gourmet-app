@@ -38,6 +38,18 @@ public class Usuario {
 	private ForeignCollection<Receta> recetas;
 	
 	public Usuario(){}
+	
+
+	/**
+	 * @param id
+	 * @param username
+	 */
+	public Usuario(int id, String username) {
+		this.id = id;
+		this.username = username;
+	}
+
+
 
 	public int getId() {
 		return id;
